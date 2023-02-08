@@ -24,7 +24,7 @@ public class Cycle {
     private LocalDate startDate;
 
     @Column (name = "lateDays")
-    private LocalDate lateDays;
+    private int lateDays;
 
     @Column  (name = "emotions")
     private Emotion emotions;
@@ -38,7 +38,7 @@ public class Cycle {
     @ManyToOne
     private User user;
 
-    public Cycle(long id, LocalDate lastDate, LocalDate startDate, LocalDate lateDays, Emotion emotions, Symptom symptoms, Flow flow){
+    public Cycle(long id, LocalDate lastDate, LocalDate startDate, int lateDays, Emotion emotions, Symptom symptoms, Flow flow){
         this.id = id;
         this.lastDate = lastDate;
         this.startDate = startDate;
@@ -74,11 +74,11 @@ public class Cycle {
         this.startDate = startDate;
     }
 
-    public LocalDate getLateDays() {
+    public int getLateDays() {
         return lateDays;
     }
 
-    public void setLateDays(LocalDate lateDays) {
+    public void setLateDays(int lateDays) {
         this.lateDays = lateDays;
     }
 

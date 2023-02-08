@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class CycleService {
@@ -14,24 +15,24 @@ public class CycleService {
     CycleRepository cycleRepository;
 
 
-    public Cycle findByStartDate(LocalDate startDate) {
-        return cycleRepository.findByStartDate(startDate).get();
+    public List<Cycle> findByStartDate(LocalDate startDate) {
+        return cycleRepository.findByStartDate(startDate);
     }
 
-    public Cycle findByLastDate(LocalDate lastDate) {
-        return cycleRepository.findByLastDate(lastDate).get();
+    public List<Cycle> findByLastDate(LocalDate lastDate) {
+        return cycleRepository.findByLastDate(lastDate);
     }
 
-    public Cycle findByLateDays(LocalDate lateDays) {
-        return cycleRepository.findByLateDays(lateDays).get();
+    public Cycle findByLateDays(int lateDays) {
+        return cycleRepository.findByLateDays(lateDays).get(lateDays);
     }
 
     public Cycle updateCycle(Cycle cycle, long id){
         Cycle cycle1 = cycleRepository.findById(id).get();
-        cycle1.setLastDate(cycle1.getLastDate());
-        cycle1.setStartDate(cycle1.getStartDate());
-        cycle1.setLateDays(cycle1.getLateDays());
-        return cycleRepository.set(cycle);
+        cycle1.setLastDate(cycle.getLastDate());
+        cycle1.setStartDate(cycle.getStartDate());
+        cycle1.setLateDays(cycle.getLateDays());
+        return cycleRepository.save(cycle1);
     }
 
     public Cycle addCycle(Cycle cycle){
