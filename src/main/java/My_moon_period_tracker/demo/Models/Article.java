@@ -1,5 +1,6 @@
 package My_moon_period_tracker.demo.Models;
 
+import My_moon_period_tracker.demo.Enums.Tag;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -34,13 +35,16 @@ public class Article {
     private List<Comment> comments;
 
 //    Do in tags - they're enums
+    @Column(name = "tags")
+    private Tag tag;
 
-    public Article (String title, String content, LocalDate date, int likes ){
+    public Article (String title, String content, LocalDate date, int likes, Tag tag ){
         this.title = title;
         this.content = content;
         this.date = date;
         this.likes = likes;
         this.comments = new ArrayList<>();
+        this.tag = tag;
     }
 
     public Article(){}
@@ -91,5 +95,13 @@ public class Article {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public Tag getTag() {
+        return tag;
+    }
+
+    public void setTag(Tag tag) {
+        this.tag = tag;
     }
 }
