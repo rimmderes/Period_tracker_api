@@ -16,7 +16,7 @@ public class Comment {
     private String text;
     @Column(name="date_posted")
     private LocalDate datePosted;
-    // do we need likes and postedBy?
+
 
     @OneToMany(mappedBy = "comment")
     @JsonIgnoreProperties({"comment"})
@@ -32,6 +32,7 @@ public class Comment {
         this.datePosted = datePosted;
     }
 
+    public Comment(){}
 
     public long getId() {
         return id;
