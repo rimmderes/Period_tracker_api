@@ -1,0 +1,7 @@
+package My_moon_period_tracker.demo.Enums;
+
+public enum Tag {
+
+    HELP_FOR_DADS, FEMALE_HEALTH, HYGIENE, FERTILITY, PREGNANCY, MENOPAUSE, YOUNG_GIRLS, CONTRACEPTION, MENSTRUATION, CRAMPS
+
+}
