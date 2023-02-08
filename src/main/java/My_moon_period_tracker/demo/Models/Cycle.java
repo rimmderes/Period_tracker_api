@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity(name = "cycles")
+
 public class Cycle {
 
 
