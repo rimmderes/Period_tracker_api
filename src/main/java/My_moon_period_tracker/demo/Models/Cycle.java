@@ -1,9 +1,9 @@
 package My_moon_period_tracker.demo.Models;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Comment;
-import org.springframework.core.SpringVersion;
+import My_moon_period_tracker.demo.Enums.Emotion;
+import My_moon_period_tracker.demo.Enums.Flow;
+import My_moon_period_tracker.demo.Enums.Symptom;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -23,22 +23,93 @@ public class Cycle {
     private LocalDate startDate;
 
     @Column (name = "lateDays")
-    private int lateDays;
+    private LocalDate lateDays;
 
     @Column  (name = "emotions")
-    private Enum emotions;
+    private Emotion emotions;
 
     @Column  (name = "symptoms")
-    private Enum symptoms;
+    private Symptom symptoms;
 
     @Column  (name = "flow")
-    private Enum flow;
+    private Flow flow;
 
     @ManyToOne
     private User user;
 
-//    public Cycle(long id, LocalDate lastDate, LocalDate startDate, LocalDate lateDays Enum emotions, Enum symptoms, Enum flow){
-//        this.id
-//    }
+    public Cycle(long id, LocalDate lastDate, LocalDate startDate, LocalDate lateDays, Emotion emotions, Symptom symptoms, Flow flow){
+        this.id = id;
+        this.lastDate = lastDate;
+        this.startDate = startDate;
+        this.lateDays = lateDays;
+        this.emotions = emotions;
+        this.symptoms = symptoms;
+        this.flow = flow;
+    }
 
+    public Cycle(){}
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public LocalDate getLastDate() {
+        return lastDate;
+    }
+
+    public void setLastDate(LocalDate lastDate) {
+        this.lastDate = lastDate;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getLateDays() {
+        return lateDays;
+    }
+
+    public void setLateDays(LocalDate lateDays) {
+        this.lateDays = lateDays;
+    }
+
+    public Emotion getEmotions() {
+        return emotions;
+    }
+
+    public void setEmotions(Emotion emotions) {
+        this.emotions = emotions;
+    }
+
+    public Symptom getSymptoms() {
+        return symptoms;
+    }
+
+    public void setSymptoms(Symptom symptoms) {
+        this.symptoms = symptoms;
+    }
+
+    public Flow getFlow() {
+        return flow;
+    }
+
+    public void setFlow(Flow flow) {
+        this.flow = flow;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
