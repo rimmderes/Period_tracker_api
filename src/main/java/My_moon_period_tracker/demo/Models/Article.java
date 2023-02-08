@@ -24,25 +24,24 @@ public class Article {
     @Column(name = "date")
     private LocalDate date;
 
-    @Column(name = "likes")
-    private int likes;
+//    @Column(name = "likes")
+//    private int likes;
 //    This uses user_id
-//    @OneToMany
-//    private User user
+    @OneToMany
+    private List<User> users;
 
     @OneToMany(mappedBy = "articles")
     @JsonIgnoreProperties
     private List<Comment> comments;
 
-//    Do in tags - they're enums
     @Column(name = "tags")
     private Tag tag;
 
-    public Article (String title, String content, LocalDate date, int likes, Tag tag ){
+    public Article (String title, String content, LocalDate date, Tag tag ){
         this.title = title;
         this.content = content;
         this.date = date;
-        this.likes = likes;
+        this.users = new ArrayList<>();
         this.comments = new ArrayList<>();
         this.tag = tag;
     }
@@ -81,13 +80,13 @@ public class Article {
         this.date = date;
     }
 
-    public int getLikes() {
-        return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
-    }
+//    public int getLikes() {
+//        return likes;
+//    }
+//
+//    public void setLikes(int likes) {
+//        this.likes = likes;
+//    }
 
     public List<Comment> getComments() {
         return comments;
@@ -103,5 +102,13 @@ public class Article {
 
     public void setTag(Tag tag) {
         this.tag = tag;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
