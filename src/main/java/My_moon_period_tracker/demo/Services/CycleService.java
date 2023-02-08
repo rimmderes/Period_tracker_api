@@ -7,12 +7,18 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CycleService {
 
     @Autowired
     CycleRepository cycleRepository;
+
+
+    public List<Cycle> getAllCycles () {
+        return cycleRepository.findAll();
+    }
 
 
     public List<Cycle> findByStartDate(LocalDate startDate) {
@@ -25,6 +31,10 @@ public class CycleService {
 
     public Cycle findByLateDays(int lateDays) {
         return cycleRepository.findByLateDays(lateDays).get(lateDays);
+    }
+
+    public Optional<Cycle> getCycleById(long id) {
+        return cycleRepository.findById(id);
     }
 
     public Cycle updateCycle(Cycle cycle, long id){
