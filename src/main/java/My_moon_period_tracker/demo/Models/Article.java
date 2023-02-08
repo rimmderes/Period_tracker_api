@@ -27,8 +27,15 @@ public class Article {
 //    @Column(name = "likes")
 //    private int likes;
 //    This uses user_id
-    @OneToMany
-    private List<User> users;
+    @ManyToMany
+    @JsonIgnoreProperties({"articles", "users"})
+    @JoinTable(
+            name = "number_of_likes_in_article",
+            joinColumns = {@JoinColumn (name = "user_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "article_id", nullable = false)}
+    )
+    private List<User> likes;
+
 
     @OneToMany(mappedBy = "articles")
     @JsonIgnoreProperties
@@ -41,7 +48,7 @@ public class Article {
         this.title = title;
         this.content = content;
         this.date = date;
-        this.users = new ArrayList<>();
+        this.likes = new ArrayList<>();
         this.comments = new ArrayList<>();
         this.tag = tag;
     }
@@ -80,13 +87,13 @@ public class Article {
         this.date = date;
     }
 
-//    public int getLikes() {
-//        return likes;
-//    }
-//
-//    public void setLikes(int likes) {
-//        this.likes = likes;
-//    }
+    public List<User> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(List<User> likes) {
+        this.likes = likes;
+    }
 
     public List<Comment> getComments() {
         return comments;
@@ -104,11 +111,11 @@ public class Article {
         this.tag = tag;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+//    public List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(List<User> users) {
+//        this.users = users;
+//    }
 }

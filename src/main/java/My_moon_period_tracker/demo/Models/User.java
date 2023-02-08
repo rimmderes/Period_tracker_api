@@ -28,6 +28,15 @@ public class User {
     private List<Comment> comments;
     private List<Cycle> cycles;
 
+    @ManyToMany
+    @JsonIgnoreProperties({"articles", "users"})
+    @JoinTable(
+            name = "number_of_likes_in_article",
+            joinColumns = {@JoinColumn (name = "article_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "user_id", nullable = false)}
+    )
+    private List<Article> articles;
+
     public User(String name, String password, String email, LocalDate DOB) {
         this.name = name;
         this.password = password;
@@ -93,5 +102,13 @@ public class User {
 
     public void setCycles(List<Cycle> cycles) {
         this.cycles = cycles;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 }

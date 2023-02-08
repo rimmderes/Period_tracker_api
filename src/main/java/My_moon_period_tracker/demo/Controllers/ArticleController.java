@@ -3,6 +3,7 @@ package My_moon_period_tracker.demo.Controllers;
 import My_moon_period_tracker.demo.Enums.Tag;
 import My_moon_period_tracker.demo.Models.Article;
 import My_moon_period_tracker.demo.Models.Comment;
+import My_moon_period_tracker.demo.Models.User;
 import My_moon_period_tracker.demo.Services.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -67,4 +68,5 @@ public class ArticleController {
         List<Comment> comments = article.get().getComments();
         return new ResponseEntity<>(comments, HttpStatus.OK);
     }
+
 }
