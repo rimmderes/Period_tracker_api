@@ -37,7 +37,7 @@ public class ArticleService {
 
 //    Find articles with same tags
     public List<Article> findByTags(Tag tag){
-        return articleRepository.findByTags(tag);
+        return articleRepository.findByTag(tag);
     }
 
 //    Find number of likes in article

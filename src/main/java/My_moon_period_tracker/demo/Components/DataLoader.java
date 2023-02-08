@@ -21,8 +21,8 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     ArticleRepository articleRepository;
 
-    @Autowired
-    UserRepository userRepository;
+//    @Autowired
+//    UserRepository userRepository;
 
     @Autowired
     UserService userService;
@@ -46,7 +46,7 @@ public class DataLoader implements ApplicationRunner {
         articleRepository.save(womenHealth);
         articleService.likeArticle(eoan.getId(), womenHealth.getId());
 
-       
+
     }
 
 

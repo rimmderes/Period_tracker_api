@@ -28,16 +28,16 @@ public class Article {
 //    private int likes;
 //    This uses user_id
     @ManyToMany
-    @JsonIgnoreProperties({"articles", "users"})
-    @JoinTable(
-            name = "number_of_likes_in_article",
-            joinColumns = {@JoinColumn (name = "user_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "article_id", nullable = false)}
-    )
+    @JsonIgnoreProperties({"article", "user"})
+//    @JoinTable(
+//            name = "number_of_likes_in_article",
+//            joinColumns = {@JoinColumn (name = "user_id", nullable = false)},
+//            inverseJoinColumns = {@JoinColumn(name = "article_id", nullable = false)}
+//    )
     private List<User> likes;
 
 
-    @OneToMany(mappedBy = "articles")
+    @OneToMany(mappedBy = "article")
     @JsonIgnoreProperties
     private List<Comment> comments;
 
