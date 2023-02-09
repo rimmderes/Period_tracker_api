@@ -88,8 +88,9 @@ public class DataLoader implements ApplicationRunner {
 
         Article womenHealth = new Article("How to have good health", "lorem ispum ...", LocalDate.of(2023, 2, 8),
                 FEMALE_HEALTH);
+        articleService.addUsersToArticles(womenHealth, rimm);
         articleRepository.save(womenHealth);
-        articleService.likeArticle(eoan.getId(), womenHealth.getId());
+//        articleService.likeArticle(eoan.getId(), womenHealth.getId());
 
         Article menstruation = new Article("Menstruation tips", "lorem ispum ...", LocalDate.of(2022, 9, 5),
                 MENSTRUATION);
@@ -115,11 +116,11 @@ public class DataLoader implements ApplicationRunner {
 
 
         // likes
-        articleService.getNumberOfLikesFromArticle(womenHealth.getId());
-        articleService.getNumberOfLikesFromArticle(menstruation.getId());
-        articleService.getNumberOfLikesFromArticle(pregnancy.getId());
-        articleService.getNumberOfLikesFromArticle(youngGirls.getId());
-        articleService.getNumberOfLikesFromArticle(menopause.getId());
+//        articleService.getNumberOfLikesFromArticle(womenHealth.getId());
+//        articleService.getNumberOfLikesFromArticle(menstruation.getId());
+//        articleService.getNumberOfLikesFromArticle(pregnancy.getId());
+//        articleService.getNumberOfLikesFromArticle(youngGirls.getId());
+//        articleService.getNumberOfLikesFromArticle(menopause.getId());
 
 
         // comments
