@@ -24,9 +24,13 @@ public class Article {
     @Column(name = "date")
     private LocalDate date;
 
-//    @Column(name = "likes")
-//    private int likes;
-//    This uses user_id
+
+    // one article many comments
+//    @OneToMany
+//    private List<User> users;
+
+    // one article many comments
+    @OneToMany(mappedBy = "articles")
     @ManyToMany
     @JsonIgnoreProperties({"article", "user"})
 //    @JoinTable(
