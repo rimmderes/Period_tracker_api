@@ -1,6 +1,7 @@
 package My_moon_period_tracker.demo.Services;
 
 import My_moon_period_tracker.demo.Models.Comment;
+import My_moon_period_tracker.demo.Models.User;
 import My_moon_period_tracker.demo.Repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,8 @@ public class CommentService {
         commentRepository.save(comment);
         return comment;
     }
+
+
 
     public void updateComment(long id, Comment comment){
         Comment comment1 = commentRepository.findById(id).get();

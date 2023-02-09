@@ -1,7 +1,9 @@
 package My_moon_period_tracker.demo.Services;
 
+import My_moon_period_tracker.demo.Models.Comment;
 import My_moon_period_tracker.demo.Models.Cycle;
 import My_moon_period_tracker.demo.Models.User;
+import My_moon_period_tracker.demo.Repositories.CommentRepository;
 import My_moon_period_tracker.demo.Repositories.CycleRepository;
 import My_moon_period_tracker.demo.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ public class UserService {
     UserRepository userRepository;
     @Autowired
     private CycleRepository cycleRepository;
+    @Autowired
+    private CommentRepository commentRepository;
 
     // get all users
 
@@ -55,6 +59,10 @@ public class UserService {
         user.setCycles(cycleList);
         userRepository.save(user);
         return user;
+    }
+
+    public void  addCommentToUser (Comment comment, User user) {
+        user.getComments().add(comment);
     }
 
 

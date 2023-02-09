@@ -9,6 +9,7 @@ import My_moon_period_tracker.demo.Repositories.CommentRepository;
 import My_moon_period_tracker.demo.Repositories.CycleRepository;
 import My_moon_period_tracker.demo.Repositories.UserRepository;
 import My_moon_period_tracker.demo.Services.ArticleService;
+import My_moon_period_tracker.demo.Services.CommentService;
 import My_moon_period_tracker.demo.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -42,10 +43,15 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     CommentRepository commentRepository;
 
+    @Autowired
+    CommentService commentService;
+
     public DataLoader(CycleRepository cycleRepository,
-                      UserRepository userRepository){
+                      UserRepository userRepository,
+                      CommentRepository commentRepository){
         this.cycleRepository = cycleRepository;
         this.userRepository = userRepository;
+        this.commentRepository = commentRepository;
     }
 
     @Override
@@ -117,7 +123,9 @@ public class DataLoader implements ApplicationRunner {
 
         // comments
         Comment comment1 = new Comment("Love this!", LocalDate.of(2023, 3, 30));
+        userService.addCommentToUser(comment1, amy);
         commentRepository.save(comment1);
+        userRepository.save(amy);
 
 
         Comment comment2 = new Comment("Interesting article", LocalDate.of(2023, 4, 30));
