@@ -54,4 +54,15 @@ public class ArticleService {
         likes.add(user.get());
         article.get().setLikes(likes);
     }
+
+    public int getArticleLikes(Article article){
+        List<User> userList = article.getLikes();
+        int sum = userList.size();
+        return sum;
+    }
+
+    public void addUsersToArticles(Article article, User user){
+        article.getLikes().add(user);
+    }
+
 }
