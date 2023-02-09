@@ -17,6 +17,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static My_moon_period_tracker.demo.Enums.Emotion.*;
 import static My_moon_period_tracker.demo.Enums.Flow.*;
@@ -61,25 +62,25 @@ public class DataLoader implements ApplicationRunner {
 
         User eoan = new User("Eoan", "password", "eoan@gmail.com", LocalDate.of(1994, 7, 1));
         userService.addNewUser(eoan);
-        userRepository.save(eoan);
+
 
         User amy = new User("Amy", "confirmpassword", "amy@hotmail.com", LocalDate.of(1999, 4, 3));
         userService.addNewUser(amy);
-        userRepository.save(amy);
+
 
         User georgia = new User("Georgia", "clarke", "georgia@hotmail.com", LocalDate.of(2000, 4, 5));
         userService.addNewUser(georgia);
-        userRepository.save(georgia);
+
 
 
         User rebecca = new User("Rebecca", "solomon", "rebecca@hotmail.com", LocalDate.of(1999, 12, 31));
         userService.addNewUser(rebecca);
-        userRepository.save(rebecca);
+
 
 
         User rimm = new User("Rimm", "Deres", "rimm@gmail.com", LocalDate.of(1999, 11, 1));
         userService.addNewUser(rimm);
-        userRepository.save(rimm);
+
 
 
 
@@ -125,7 +126,7 @@ public class DataLoader implements ApplicationRunner {
         Comment comment1 = new Comment("Love this!", LocalDate.of(2023, 3, 30));
         userService.addCommentToUser(comment1, amy);
         commentRepository.save(comment1);
-        userRepository.save(amy);
+
 
 
         Comment comment2 = new Comment("Interesting article", LocalDate.of(2023, 4, 30));
@@ -143,19 +144,19 @@ public class DataLoader implements ApplicationRunner {
         Cycle rimm2Cycle = new Cycle(LocalDate.of(2022, 12, 27), LocalDate.of(2023, 1, 2), 0, HAPPY, TENDER_BREASTS, HEAVY);
         userService.addCycleToUser(rimm2Cycle, rimm);
         cycleRepository.save(rimm2Cycle);
-        userRepository.save(rimm);
+
 
 
         Cycle amyCycle = new Cycle(LocalDate.of(2022, 11, 28), LocalDate.of(2022, 12, 1), 0, ENERGETIC, CRAVINGS, LIGHT);
         userService.addCycleToUser(amyCycle, amy);
         cycleRepository.save(amyCycle);
-        userRepository.save(amy);
+
 
 
         Cycle georgiaCycle = new Cycle(LocalDate.of(2023, 2, 2), LocalDate.of(2023, 2, 8), 0, FRISKY, HEADACHE, SUPER_HEAVY);
         userService.addCycleToUser(georgiaCycle, georgia);
         cycleRepository.save(georgiaCycle);
-        userRepository.save(georgia);
+
 
 
         Cycle rebeccaCycle = new Cycle(LocalDate.of(2022, 9, 7), LocalDate.of(2022, 9, 11), 0, IRRITATED, FATIGUE, SUPER_HEAVY);
@@ -181,9 +182,9 @@ public class DataLoader implements ApplicationRunner {
         Cycle rebecca6Cycle = new Cycle(LocalDate.of(2023, 1, 19), LocalDate.of(2023, 1, 23), 0, APATHETIC, INSOMNIA, SUPER_HEAVY);
         userService.addCycleToUser(rebecca6Cycle, rebecca);
         cycleRepository.save(rebecca6Cycle);
-        userRepository.save(rebecca);
 
 
+        userRepository.saveAll(List.of(rimm, amy, eoan, georgia, rebecca));
 
 
 
