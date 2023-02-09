@@ -23,7 +23,8 @@ public class User {
     @Column(name = "DOB")
     private LocalDate DOB;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
+//            (mappedBy = "user")
     @JsonIgnoreProperties({"user"})
     private List<Comment> comments;
 
