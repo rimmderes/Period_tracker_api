@@ -60,6 +60,16 @@ public class CycleController {
     }
 
 
+// GET CYCLE BY ID
+    @GetMapping(value="/{id}")
+    public ResponseEntity<Cycle> getCycleById(@PathVariable long id){
+        Optional<Cycle> cycle = cycleService.getCycleById(id);
+        if (cycle.isPresent()){
+            return new ResponseEntity<>(cycle.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 

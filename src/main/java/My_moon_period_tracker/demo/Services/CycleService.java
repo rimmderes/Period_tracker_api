@@ -17,8 +17,7 @@ public class CycleService {
     @Autowired
     CycleRepository cycleRepository;
 
-//    @Autowired
-//    UserRepository userRepository
+
 
 
     public List<Cycle> getAllCycles () {
