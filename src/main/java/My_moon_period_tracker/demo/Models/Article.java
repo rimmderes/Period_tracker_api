@@ -32,12 +32,12 @@ public class Article {
     // one article many comments
 //    @OneToMany(mappedBy = "articles")
     @ManyToMany
-    @JsonIgnoreProperties({"article", "user"})
-//    @JoinTable(
-//            name = "number_of_likes_in_article",
-//            joinColumns = {@JoinColumn (name = "user_id", nullable = false)},
-//            inverseJoinColumns = {@JoinColumn(name = "article_id", nullable = false)}
-//    )
+    @JsonIgnoreProperties({"article", "likes"})
+    @JoinTable(
+            name = "number_of_likes_in_article",
+            joinColumns = {@JoinColumn (name = "likes", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "article_id", nullable = false)}
+    )
     private List<User> likes;
 
 

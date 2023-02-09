@@ -1,8 +1,10 @@
 package My_moon_period_tracker.demo.Components;
 
 import My_moon_period_tracker.demo.Models.Article;
+import My_moon_period_tracker.demo.Models.Cycle;
 import My_moon_period_tracker.demo.Models.User;
 import My_moon_period_tracker.demo.Repositories.ArticleRepository;
+import My_moon_period_tracker.demo.Repositories.CycleRepository;
 import My_moon_period_tracker.demo.Repositories.UserRepository;
 import My_moon_period_tracker.demo.Services.ArticleService;
 import My_moon_period_tracker.demo.Services.UserService;
@@ -13,6 +15,9 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
+import static My_moon_period_tracker.demo.Enums.Emotion.SAD;
+import static My_moon_period_tracker.demo.Enums.Flow.MEDIUM;
+import static My_moon_period_tracker.demo.Enums.Symptom.ACNE;
 import static My_moon_period_tracker.demo.Enums.Tag.*;
 
 @Component
@@ -29,8 +34,11 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     ArticleService articleService;
+    private final CycleRepository cycleRepository;
 
-    public DataLoader(){}
+    public DataLoader(CycleRepository cycleRepository){
+        this.cycleRepository = cycleRepository;
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception{
@@ -80,6 +88,23 @@ public class DataLoader implements ApplicationRunner {
                 MENOPAUSE);
         articleRepository.save(menopause);
         articleService.likeArticle(amy.getId(), menopause.getId());
+
+
+
+        // likes
+        articleService.getNumberOfLikesFromArticle(womenHealth.getId());
+        articleService.getNumberOfLikesFromArticle(menstruation.getId());
+        articleService.getNumberOfLikesFromArticle(pregnancy.getId());
+        articleService.getNumberOfLikesFromArticle(youngGirls.getId());
+        articleService.getNumberOfLikesFromArticle(menopause.getId());
+
+
+
+        // cycle
+
+        Cycle rimmCycle = new Cycle(LocalDate.of(2023, 01, 29), LocalDate.of(2023, 01, 22), 2, SAD, ACNE, MEDIUM, rimm);
+        cycleRepository.save(rimmCycle);
+        rimm.addNewCycle(rimmCycle);
 
 
 

@@ -1,7 +1,9 @@
 package My_moon_period_tracker.demo.Services;
 
 import My_moon_period_tracker.demo.Models.Cycle;
+import My_moon_period_tracker.demo.Models.User;
 import My_moon_period_tracker.demo.Repositories.CycleRepository;
+import My_moon_period_tracker.demo.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,9 @@ public class CycleService {
 
     @Autowired
     CycleRepository cycleRepository;
+
+//    @Autowired
+//    UserRepository userRepository
 
 
     public List<Cycle> getAllCycles () {

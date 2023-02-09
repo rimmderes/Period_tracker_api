@@ -42,7 +42,7 @@ public class CycleController {
 
     // find by start date
 
-    @GetMapping
+    @GetMapping (value= "/startdate")
     public ResponseEntity<List<Cycle>> getCyclebyStartDate (
             @RequestParam(required=false, name="startdate") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
             LocalDate startDate) {
@@ -52,10 +52,14 @@ public class CycleController {
         return new ResponseEntity<>(cycleService.getAllCycles(), HttpStatus.OK);
     }
 
+    // GET ALL CYCLES
+    @GetMapping
+    public ResponseEntity<List<Cycle>> allCycles() {
+        List<Cycle> cycles = cycleService.getAllCycles();
+        return new ResponseEntity<>(cycles, HttpStatus.OK);
+    }
 
-    // find by last date
-//    @GetMapping
-//    public ResponseEntity<>
+
 
 
 

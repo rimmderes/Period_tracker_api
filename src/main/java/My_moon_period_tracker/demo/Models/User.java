@@ -27,16 +27,16 @@ public class User {
     @JsonIgnoreProperties({"user"})
     private List<Comment> comments;
 
-//    @OneToMany
-//    private List<Cycle> cycles;
+    @OneToMany
+    private List<Cycle> cycles;
 
     @ManyToMany
-    @JsonIgnoreProperties({"articles", "user"})
-//    @JoinTable(
-//            name = "number_of_likes_in_article",
-//            joinColumns = {@JoinColumn (name = "article_id", nullable = false)},
-//            inverseJoinColumns = {@JoinColumn(name = "user_id", nullable = false)}
-//    )
+    @JsonIgnoreProperties({"articles", "likes"})
+    @JoinTable(
+            name = "number_of_likes_in_article",
+            joinColumns = {@JoinColumn (name = "article_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "likes", nullable = false)}
+    )
     private List<Article> articles;
 
     public User(String name, String password, String email, LocalDate DOB) {
@@ -45,10 +45,14 @@ public class User {
         this.email = email;
         this.DOB = DOB;
         this.comments = new ArrayList<>();
-//        this.cycles = new ArrayList<>();
+        this.cycles = new ArrayList<>();
     }
 
     public User(){}
+
+    public void addNewCycle(Cycle cycle){
+        this.cycles.add(cycle);
+    }
 
     public long getId() {
         return id;
@@ -98,13 +102,13 @@ public class User {
         this.comments = comments;
     }
 
-//    public List<Cycle> getCycles() {
-//        return cycles;
-//    }
-//
-//    public void setCycles(List<Cycle> cycles) {
-//        this.cycles = cycles;
-//    }
+    public List<Cycle> getCycles() {
+        return cycles;
+    }
+
+    public void setCycles(List<Cycle> cycles) {
+        this.cycles = cycles;
+    }
 
     public List<Article> getArticles() {
         return articles;

@@ -35,17 +35,20 @@ public class Cycle {
     @Column  (name = "flow")
     private Flow flow;
 
-//    @ManyToOne
-//    private User user;
+    @ManyToOne
+    private User user;
 
-    public Cycle(long id, LocalDate lastDate, LocalDate startDate, int lateDays, Emotion emotions, Symptom symptoms, Flow flow){
-        this.id = id;
+
+
+    public Cycle(LocalDate lastDate, LocalDate startDate, int lateDays, Emotion emotions, Symptom symptoms, Flow flow, User user){
+//        this.id = id;
         this.lastDate = lastDate;
         this.startDate = startDate;
         this.lateDays = lateDays;
         this.emotions = emotions;
         this.symptoms = symptoms;
         this.flow = flow;
+        this.user = user;
     }
 
     public Cycle(){}
@@ -106,11 +109,11 @@ public class Cycle {
         this.flow = flow;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
