@@ -20,6 +20,7 @@ public class Comment {
 
     @ManyToOne
     @JsonIgnoreProperties({"comment"})
+    @JoinColumn(name = "article_id")
     private Article article;
 
     @ManyToOne

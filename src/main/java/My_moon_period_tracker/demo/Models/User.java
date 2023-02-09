@@ -27,17 +27,12 @@ public class User {
     @JsonIgnoreProperties({"user"})
     private List<Comment> comments;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties ({"user"})
     private List<Cycle> cycles;
 
-    @ManyToMany
-    @JsonIgnoreProperties({"articles", "likes"})
-    @JoinTable(
-            name = "number_of_likes_in_article",
-            joinColumns = {@JoinColumn (name = "article_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "likes", nullable = false)}
-    )
+    @JsonIgnoreProperties({"like"})
+    @ManyToMany(mappedBy = "likes")
     private List<Article> articles;
 
     public User(String name, String password, String email, LocalDate DOB) {

@@ -39,9 +39,10 @@ public class DataLoader implements ApplicationRunner {
     ArticleService articleService;
     private final CycleRepository cycleRepository;
     private final UserRepository userRepository;
+    private final CommentRepository commentRepository;
 
-    @Autowired
-    CommentRepository commentRepository;
+//    @Autowired
+//    CommentRepository commentRepository;
 
     @Autowired
     CommentService commentService;

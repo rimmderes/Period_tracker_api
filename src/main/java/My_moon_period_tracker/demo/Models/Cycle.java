@@ -38,6 +38,7 @@ public class Cycle {
 
     @ManyToOne
     @JsonIgnoreProperties({"cycles"})
+    @JoinColumn(name = "user_id")
     private User user;
 
 
