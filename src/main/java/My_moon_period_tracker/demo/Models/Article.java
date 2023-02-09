@@ -26,11 +26,13 @@ public class Article {
 
 
     // one article many comments
-//    @OneToMany
-//    private List<User> users;
+    @OneToMany
+    private List<User> users;
 
     // one article many comments
 //    @OneToMany(mappedBy = "articles")
+
+
     @ManyToMany
     @JsonIgnoreProperties({"article", "likes"})
     @JoinTable(
@@ -126,11 +128,11 @@ public class Article {
         this.tag = tag;
     }
 
-//    public List<User> getUsers() {
-//        return users;
-//    }
-//
-//    public void setUsers(List<User> users) {
-//        this.users = users;
-//    }
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 }

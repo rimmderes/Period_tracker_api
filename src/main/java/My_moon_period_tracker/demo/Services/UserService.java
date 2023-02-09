@@ -18,6 +18,7 @@ public class UserService {
     UserRepository userRepository;
     @Autowired
     private CycleRepository cycleRepository;
+
     @Autowired
     private CommentRepository commentRepository;
 
@@ -61,8 +62,19 @@ public class UserService {
         return user;
     }
 
+    // addCommentToUser
     public void  addCommentToUser (Comment comment, User user) {
         user.getComments().add(comment);
+    }
+
+    public User addCommentToUser (long userId, long commentId) {
+        User user = userRepository.findById(userId).get();
+        Comment comment = commentRepository.findById(commentId).get();
+        List <Comment> commentList = user.getComments();
+        commentList.add(comment);
+        user.setComments(commentList);
+        userRepository.save(user);
+        return user;
     }
 
 
