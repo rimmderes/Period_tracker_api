@@ -15,12 +15,9 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
-import static My_moon_period_tracker.demo.Enums.Emotion.HAPPY;
-import static My_moon_period_tracker.demo.Enums.Emotion.SAD;
-import static My_moon_period_tracker.demo.Enums.Flow.HEAVY;
-import static My_moon_period_tracker.demo.Enums.Flow.MEDIUM;
-import static My_moon_period_tracker.demo.Enums.Symptom.ACNE;
-import static My_moon_period_tracker.demo.Enums.Symptom.TENDER_BREASTS;
+import static My_moon_period_tracker.demo.Enums.Emotion.*;
+import static My_moon_period_tracker.demo.Enums.Flow.*;
+import static My_moon_period_tracker.demo.Enums.Symptom.*;
 import static My_moon_period_tracker.demo.Enums.Tag.*;
 
 @Component
@@ -113,20 +110,63 @@ public class DataLoader implements ApplicationRunner {
         articleService.getNumberOfLikesFromArticle(menopause.getId());
 
 
+        // comments
+
+
+
+
 
         // adding cycles to user
 
-        Cycle rimmCycle = new Cycle(LocalDate.of(2023, 01, 29), LocalDate.of(2023, 01, 22), 2, SAD, ACNE, MEDIUM, rimm);
+        Cycle rimmCycle = new Cycle(LocalDate.of(2023, 01, 29), LocalDate.of(2023, 1, 22), 2, SAD, ACNE, MEDIUM, rimm);
         userService.addCycleToUser(rimmCycle, rimm);
         cycleRepository.save(rimmCycle);
 
-        Cycle rimm2Cycle = new Cycle(LocalDate.of(2022, 12, 27), LocalDate.of(2023, 01, 2), 0, HAPPY, TENDER_BREASTS, HEAVY, rimm);
+        Cycle rimm2Cycle = new Cycle(LocalDate.of(2022, 12, 27), LocalDate.of(2023, 1, 2), 0, HAPPY, TENDER_BREASTS, HEAVY, rimm);
         userService.addCycleToUser(rimm2Cycle, rimm);
         cycleRepository.save(rimm2Cycle);
         userRepository.save(rimm);
 
 
-        // comments
+        Cycle amyCycle = new Cycle(LocalDate.of(2022, 11, 28), LocalDate.of(2022, 12, 1), 0, ENERGETIC, CRAVINGS, LIGHT, amy);
+        userService.addCycleToUser(amyCycle, amy);
+        cycleRepository.save(amyCycle);
+        userRepository.save(amy);
+
+
+        Cycle georgiaCycle = new Cycle(LocalDate.of(2023, 2, 2), LocalDate.of(2023, 2, 8), 0, FRISKY, HEADACHE, SUPER_HEAVY, georgia);
+        userService.addCycleToUser(georgiaCycle, georgia);
+        cycleRepository.save(georgiaCycle);
+        userRepository.save(georgia);
+
+
+        Cycle rebeccaCycle = new Cycle(LocalDate.of(2022, 9, 7), LocalDate.of(2022, 9, 11), 0, IRRITATED, FATIGUE, SUPER_HEAVY, rebecca);
+        userService.addCycleToUser(rebeccaCycle, rebecca);
+        cycleRepository.save(rebeccaCycle);
+
+        Cycle rebecca2Cycle = new Cycle(LocalDate.of(2022, 10, 5), LocalDate.of(2022, 10, 9), 0, ANXIOUS, BACKACHE, HEAVY, rebecca);
+        userService.addCycleToUser(rebecca2Cycle, rebecca);
+        cycleRepository.save(rebecca2Cycle);
+
+        Cycle rebecca3Cycle = new Cycle(LocalDate.of(2022, 10, 30), LocalDate.of(2022, 11, 3), 0, CALM, BACKACHE, LIGHT, rebecca);
+        userService.addCycleToUser(rebecca3Cycle, rebecca);
+        cycleRepository.save(rebecca3Cycle);
+
+        Cycle rebecca4Cycle = new Cycle(LocalDate.of(2022, 11, 26), LocalDate.of(2022, 11, 30), 0, MOOD_SWINGS, FATIGUE, MEDIUM, rebecca);
+        userService.addCycleToUser(rebecca4Cycle, rebecca);
+        cycleRepository.save(rebecca4Cycle);
+
+        Cycle rebecca5Cycle = new Cycle(LocalDate.of(2022, 12, 21), LocalDate.of(2022, 12, 25), 0, OBSESSIVE_THOUGHTS, BLOATING, HEAVY, rebecca);
+        userService.addCycleToUser(rebecca5Cycle, rebecca);
+        cycleRepository.save(rebecca5Cycle);
+
+        Cycle rebecca6Cycle = new Cycle(LocalDate.of(2023, 1, 19), LocalDate.of(2023, 1, 23), 0, APATHETIC, INSOMNIA, SUPER_HEAVY, rebecca);
+        userService.addCycleToUser(rebecca6Cycle, rebecca);
+        cycleRepository.save(rebecca6Cycle);
+        userRepository.save(rebecca);
+
+
+
 
 
 
