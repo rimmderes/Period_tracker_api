@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity(name="comments")
+@Entity(name="comment")
 public class Comment {
 
     @Id
@@ -18,12 +18,12 @@ public class Comment {
     private LocalDate datePosted;
 
 
-    @OneToMany(mappedBy = "comment")
+    @ManyToOne
     @JsonIgnoreProperties({"comment"})
-    private List<Article> articles;
+    private Article article;
 
     @ManyToOne
-    @JsonIgnoreProperties({"comments"})
+    @JsonIgnoreProperties({"comment"})
     @JoinColumn(name ="user_id")
     private User user;
 
@@ -58,12 +58,12 @@ public class Comment {
         this.datePosted = datePosted;
     }
 
-    public List<Article> getArticles() {
-        return articles;
+    public Article getArticle() {
+        return article;
     }
 
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
+    public void setArticle(Article article) {
+        this.article = article;
     }
 
     public User getUser() {

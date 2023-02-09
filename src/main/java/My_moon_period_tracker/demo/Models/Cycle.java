@@ -8,7 +8,7 @@ import My_moon_period_tracker.demo.Enums.Symptom;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity(name = "cycles")
+@Entity(name = "cycle")
 
 public class Cycle {
 
@@ -35,8 +35,8 @@ public class Cycle {
     @Column  (name = "flow")
     private Flow flow;
 
-    @ManyToOne
-    private User user;
+//    @ManyToOne
+//    private User user;
 
     public Cycle(long id, LocalDate lastDate, LocalDate startDate, int lateDays, Emotion emotions, Symptom symptoms, Flow flow){
         this.id = id;
@@ -106,11 +106,11 @@ public class Cycle {
         this.flow = flow;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }

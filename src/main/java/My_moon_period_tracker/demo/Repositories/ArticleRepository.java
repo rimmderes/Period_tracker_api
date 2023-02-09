@@ -13,6 +13,6 @@ public interface ArticleRepository  extends JpaRepository<Article, Long> {
     List<Article> findByTitle (String title);
 
 
-    List<Article> findByTags(Tag tags);
+    List<Article> findByTag(Tag tag);
 
 }

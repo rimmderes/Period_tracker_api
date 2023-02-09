@@ -28,6 +28,12 @@ public class CommentService {
         return comment;
     }
 
+    public void updateComment(long id, Comment comment){
+        Comment comment1 = commentRepository.findById(id).get();
+        comment1.setText(comment.getText());
+        comment1.setDatePosted(comment.getDatePosted());
+        commentRepository.save(comment);
+    }
     public void deleteComment(long id){
         commentRepository.deleteById(id);
     }
