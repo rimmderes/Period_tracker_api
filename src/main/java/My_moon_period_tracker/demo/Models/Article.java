@@ -30,7 +30,7 @@ public class Article {
 //    private List<User> users;
 
     // one article many comments
-    @OneToMany(mappedBy = "articles")
+//    @OneToMany(mappedBy = "articles")
     @ManyToMany
     @JsonIgnoreProperties({"article", "user"})
 //    @JoinTable(
