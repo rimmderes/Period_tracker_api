@@ -1,9 +1,11 @@
 package My_moon_period_tracker.demo.Components;
 
 import My_moon_period_tracker.demo.Models.Article;
+import My_moon_period_tracker.demo.Models.Comment;
 import My_moon_period_tracker.demo.Models.Cycle;
 import My_moon_period_tracker.demo.Models.User;
 import My_moon_period_tracker.demo.Repositories.ArticleRepository;
+import My_moon_period_tracker.demo.Repositories.CommentRepository;
 import My_moon_period_tracker.demo.Repositories.CycleRepository;
 import My_moon_period_tracker.demo.Repositories.UserRepository;
 import My_moon_period_tracker.demo.Services.ArticleService;
@@ -36,6 +38,9 @@ public class DataLoader implements ApplicationRunner {
     ArticleService articleService;
     private final CycleRepository cycleRepository;
     private final UserRepository userRepository;
+
+    @Autowired
+    CommentRepository commentRepository;
 
     public DataLoader(CycleRepository cycleRepository,
                       UserRepository userRepository){
@@ -111,14 +116,19 @@ public class DataLoader implements ApplicationRunner {
 
 
         // comments
+        Comment comment1 = new Comment("Love this!", LocalDate.of(2023, 3, 30));
+        commentRepository.save(comment1);
 
+
+        Comment comment2 = new Comment("Interesting article", LocalDate.of(2023, 4, 30));
+        commentRepository.save(comment2);
 
 
 
 
         // adding cycles to user
 
-        Cycle rimmCycle = new Cycle(LocalDate.of(2023, 01, 29), LocalDate.of(2023, 1, 22), 2, SAD, ACNE, MEDIUM);
+        Cycle rimmCycle = new Cycle(LocalDate.of(2023, 1, 29), LocalDate.of(2023, 1, 22), 2, SAD, ACNE, MEDIUM);
         userService.addCycleToUser(rimmCycle, rimm);
         cycleRepository.save(rimmCycle);
 
