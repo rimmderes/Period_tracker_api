@@ -1,6 +1,7 @@
 package My_moon_period_tracker.demo.Controllers;
 
 import My_moon_period_tracker.demo.Models.User;
+import My_moon_period_tracker.demo.Models.UserToCycleDTO;
 import My_moon_period_tracker.demo.Repositories.UserRepository;
 import My_moon_period_tracker.demo.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,15 @@ public class UserController {
     public ResponseEntity<User> addNewUser(@RequestBody User user) {
         User addedUser = userService.addNewUser(user);
         return new ResponseEntity<>(addedUser, HttpStatus.CREATED);
+    }
+
+    // adding cycle to user
+
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<User> addCycletoUser (@PathVariable long id, @RequestBody UserToCycleDTO userToCycleDTO) {
+        long userId = userToCycleDTO.getUserId();
+        User updatedUser = userService.addCycleToUser(id, userId);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
 }
