@@ -54,9 +54,8 @@ public class CycleController {
 
 
     // find by last date
-
-//    @GetMapping
-//    public ResponseEntity<>
+    @GetMapping
+    public ResponseEntity<>
 
 
 
