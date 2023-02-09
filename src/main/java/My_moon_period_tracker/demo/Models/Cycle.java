@@ -4,6 +4,7 @@ package My_moon_period_tracker.demo.Models;
 import My_moon_period_tracker.demo.Enums.Emotion;
 import My_moon_period_tracker.demo.Enums.Flow;
 import My_moon_period_tracker.demo.Enums.Symptom;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -36,6 +37,7 @@ public class Cycle {
     private Flow flow;
 
     @ManyToOne
+    @JsonIgnoreProperties({"cycles"})
     private User user;
 
 

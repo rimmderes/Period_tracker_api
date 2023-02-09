@@ -28,6 +28,7 @@ public class User {
     private List<Comment> comments;
 
     @OneToMany
+    @JsonIgnoreProperties ({"user"})
     private List<Cycle> cycles;
 
     @ManyToMany

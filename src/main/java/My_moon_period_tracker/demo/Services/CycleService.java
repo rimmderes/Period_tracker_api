@@ -50,8 +50,9 @@ public class CycleService {
         return cycleRepository.save(cycle1);
     }
 
-    public Cycle addCycle(Cycle cycle){
-        return  cycleRepository.save(cycle);
-    }
+//    public Cycle addCycle(Cycle cycle){
+//        return  cycleRepository.save(cycle);
+//    }
+
 }
 

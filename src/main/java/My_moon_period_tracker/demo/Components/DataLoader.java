@@ -15,9 +15,12 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
+import static My_moon_period_tracker.demo.Enums.Emotion.HAPPY;
 import static My_moon_period_tracker.demo.Enums.Emotion.SAD;
+import static My_moon_period_tracker.demo.Enums.Flow.HEAVY;
 import static My_moon_period_tracker.demo.Enums.Flow.MEDIUM;
 import static My_moon_period_tracker.demo.Enums.Symptom.ACNE;
+import static My_moon_period_tracker.demo.Enums.Symptom.TENDER_BREASTS;
 import static My_moon_period_tracker.demo.Enums.Tag.*;
 
 @Component
@@ -35,9 +38,12 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     ArticleService articleService;
     private final CycleRepository cycleRepository;
+    private final UserRepository userRepository;
 
-    public DataLoader(CycleRepository cycleRepository){
+    public DataLoader(CycleRepository cycleRepository,
+                      UserRepository userRepository){
         this.cycleRepository = cycleRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -47,18 +53,26 @@ public class DataLoader implements ApplicationRunner {
 
         User eoan = new User("Eoan", "password", "eoan@gmail.com", LocalDate.of(1994, 7, 1));
         userService.addNewUser(eoan);
+        userRepository.save(eoan);
 
         User amy = new User("Amy", "confirmpassword", "amy@hotmail.com", LocalDate.of(1999, 4, 3));
         userService.addNewUser(amy);
+        userRepository.save(amy);
 
         User georgia = new User("Georgia", "clarke", "georgia@hotmail.com", LocalDate.of(2000, 4, 5));
         userService.addNewUser(georgia);
+        userRepository.save(georgia);
+
 
         User rebecca = new User("Rebecca", "solomon", "rebecca@hotmail.com", LocalDate.of(1999, 12, 31));
         userService.addNewUser(rebecca);
+        userRepository.save(rebecca);
+
 
         User rimm = new User("Rimm", "Deres", "rimm@gmail.com", LocalDate.of(1999, 11, 1));
         userService.addNewUser(rimm);
+        userRepository.save(rimm);
+
 
 
         //articles
@@ -100,11 +114,25 @@ public class DataLoader implements ApplicationRunner {
 
 
 
-        // cycle
+        // adding cycles to user
 
         Cycle rimmCycle = new Cycle(LocalDate.of(2023, 01, 29), LocalDate.of(2023, 01, 22), 2, SAD, ACNE, MEDIUM, rimm);
+        userService.addCycleToUser(rimmCycle, rimm);
         cycleRepository.save(rimmCycle);
-        rimm.addNewCycle(rimmCycle);
+
+        Cycle rimm2Cycle = new Cycle(LocalDate.of(2022, 12, 27), LocalDate.of(2023, 01, 2), 0, HAPPY, TENDER_BREASTS, HEAVY, rimm);
+        userService.addCycleToUser(rimm2Cycle, rimm);
+        cycleRepository.save(rimm2Cycle);
+        userRepository.save(rimm);
+
+
+        // comments
+
+
+
+
+
+
 
 
 

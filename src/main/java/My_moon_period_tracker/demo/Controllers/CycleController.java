@@ -25,11 +25,11 @@ public class CycleController {
 
 
     // add a cycle
-    @PostMapping
-    public ResponseEntity<Cycle> addNewCycle (@RequestBody Cycle cycle) {
-        Cycle newCycle = cycleService.addCycle(cycle);
-        return new ResponseEntity<>(newCycle, HttpStatus.CREATED);
-    }
+//    @PostMapping
+//    public ResponseEntity<Cycle> addNewCycle (@RequestBody Cycle cycle) {
+//        Cycle newCycle = cycleService.addCycle(cycle);
+//        return new ResponseEntity<>(newCycle, HttpStatus.CREATED);
+//    }
 
     // update a cycle
     @PatchMapping(value = "/{id}")
