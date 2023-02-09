@@ -127,10 +127,7 @@ public class DataLoader implements ApplicationRunner {
         Comment comment1 = new Comment("Love this!", LocalDate.of(2023, 3, 30));
         userService.addCommentToUser(comment1, amy);
         commentRepository.save(comment1);
-<<<<<<< HEAD
 
-=======
->>>>>>> RimmBranch
 
 
         Comment comment2 = new Comment("Interesting article", LocalDate.of(2023, 4, 30));
@@ -151,31 +148,18 @@ public class DataLoader implements ApplicationRunner {
         Cycle rimm2Cycle = new Cycle(LocalDate.of(2022, 12, 27), LocalDate.of(2023, 1, 2), 0, HAPPY, TENDER_BREASTS, HEAVY);
         userService.addCycleToUser(rimm2Cycle, rimm);
         cycleRepository.save(rimm2Cycle);
-<<<<<<< HEAD
 
-=======
-//        userRepository.save(rimm);
->>>>>>> RimmBranch
 
 
         Cycle amyCycle = new Cycle(LocalDate.of(2022, 11, 28), LocalDate.of(2022, 12, 1), 0, ENERGETIC, CRAVINGS, LIGHT);
         userService.addCycleToUser(amyCycle, amy);
         cycleRepository.save(amyCycle);
-<<<<<<< HEAD
-
-=======
-//        userRepository.save(amy);
->>>>>>> RimmBranch
 
 
         Cycle georgiaCycle = new Cycle(LocalDate.of(2023, 2, 2), LocalDate.of(2023, 2, 8), 0, FRISKY, HEADACHE, SUPER_HEAVY);
         userService.addCycleToUser(georgiaCycle, georgia);
         cycleRepository.save(georgiaCycle);
-<<<<<<< HEAD
 
-=======
-//        userRepository.save(georgia);
->>>>>>> RimmBranch
 
 
         Cycle rebeccaCycle = new Cycle(LocalDate.of(2022, 9, 7), LocalDate.of(2022, 9, 11), 0, IRRITATED, FATIGUE, SUPER_HEAVY);
@@ -201,13 +185,7 @@ public class DataLoader implements ApplicationRunner {
         Cycle rebecca6Cycle = new Cycle(LocalDate.of(2023, 1, 19), LocalDate.of(2023, 1, 23), 0, APATHETIC, INSOMNIA, SUPER_HEAVY);
         userService.addCycleToUser(rebecca6Cycle, rebecca);
         cycleRepository.save(rebecca6Cycle);
-<<<<<<< HEAD
-=======
-//        userRepository.save(rebecca);
 
-
-        userRepository.saveAll(List.of(rimm, amy, eoan, georgia, rebecca));
->>>>>>> RimmBranch
 
 
         userRepository.saveAll(List.of(rimm, amy, eoan, georgia, rebecca));
