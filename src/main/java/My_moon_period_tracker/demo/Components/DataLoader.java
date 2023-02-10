@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static My_moon_period_tracker.demo.Enums.Emotion.*;
 import static My_moon_period_tracker.demo.Enums.Flow.*;
@@ -60,7 +61,7 @@ public class DataLoader implements ApplicationRunner {
 
         // users
 
-        User eoan = new User("Eoan", "password", "eoan@gmail.com", LocalDate.of(1994, 7, 1));
+        User eoan = new User("Eoan", "password", "eoan@gmail.com", LocalDate.of(1997, 7, 1));
         userService.addNewUser(eoan);
 
 
@@ -72,46 +73,58 @@ public class DataLoader implements ApplicationRunner {
         userService.addNewUser(georgia);
 
 
-
         User rebecca = new User("Rebecca", "solomon", "rebecca@hotmail.com", LocalDate.of(1999, 12, 31));
         userService.addNewUser(rebecca);
-
 
 
         User rimm = new User("Rimm", "Deres", "rimm@gmail.com", LocalDate.of(1999, 11, 1));
         userService.addNewUser(rimm);
 
 
+        User khalil = new User("Khalil", "Hersi", "khalil@gmail.com", LocalDate.of(1994, 8, 6));
+        userService.addNewUser(khalil);
+
+
 
 
         //articles
 
-        Article womenHealth = new Article("How to have good health", "lorem ispum ...", LocalDate.of(2023, 2, 8),
+        Article womenHealth = new Article("How-to-have-good-health", "lorem ispum ...", LocalDate.of(2023, 2, 8),
                 FEMALE_HEALTH);
-        articleService.addUsersToArticles(womenHealth, rimm);
         articleRepository.save(womenHealth);
-//        articleService.likeArticle(eoan.getId(), womenHealth.getId());
+
+        articleService.likeArticle(1, 1);
+
+
 
         Article menstruation = new Article("Menstruation tips", "lorem ispum ...", LocalDate.of(2022, 9, 5),
                 MENSTRUATION);
         articleRepository.save(menstruation);
-        articleService.likeArticle(rimm.getId(), menstruation.getId());
+
+        articleService.likeArticle(5, 2);
+
 
         Article pregnancy = new Article("Your pregnancy journey", "lorem ispum ...", LocalDate.of(2021, 2, 14), PREGNANCY);
         articleRepository.save(pregnancy);
-        articleService.likeArticle(rebecca.getId(), pregnancy.getId());
+
+        articleService.likeArticle(4, 3);
+
 
 
         Article youngGirls = new Article("For the girlies", "lorem ispum ...", LocalDate.of(2020, 6, 22),
                 YOUNG_GIRLS);
         articleRepository.save(youngGirls);
-        articleService.likeArticle(georgia.getId(), youngGirls.getId());
+        articleService.likeArticle(3, 4);
+
+
 
 
         Article menopause = new Article("For the older ladies", "lorem ispum ...", LocalDate.of(2023, 1, 26),
                 MENOPAUSE);
         articleRepository.save(menopause);
-        articleService.likeArticle(amy.getId(), menopause.getId());
+        articleService.likeArticle(2, 5);
+
+
 
 
 
@@ -125,12 +138,16 @@ public class DataLoader implements ApplicationRunner {
 
         // comments
         Comment comment1 = new Comment("Love this!", LocalDate.of(2023, 3, 30));
+        articleService.addCommentToArticle(comment1, womenHealth);
         userService.addCommentToUser(comment1, amy);
+
         commentRepository.save(comment1);
 
 
 
+
         Comment comment2 = new Comment("Interesting article", LocalDate.of(2023, 4, 30));
+       userService.addCommentToUser(comment2, amy);
         commentRepository.save(comment2);
 
 
@@ -141,58 +158,60 @@ public class DataLoader implements ApplicationRunner {
 
         // adding cycles to user
 
-        Cycle rimmCycle = new Cycle(LocalDate.of(2023, 1, 29), LocalDate.of(2023, 1, 22), 2, SAD, ACNE, MEDIUM);
+        Cycle rimmCycle = new Cycle(LocalDate.of(2023, 1, 22), LocalDate.of(2023, 1, 29),  SAD, ACNE, MEDIUM );
         userService.addCycleToUser(rimmCycle, rimm);
         cycleRepository.save(rimmCycle);
 
-        Cycle rimm2Cycle = new Cycle(LocalDate.of(2022, 12, 27), LocalDate.of(2023, 1, 2), 0, HAPPY, TENDER_BREASTS, HEAVY);
+        Cycle rimm2Cycle = new Cycle(LocalDate.of(2022, 12, 27), LocalDate.of(2023, 1, 2),  HAPPY, TENDER_BREASTS, HEAVY, LocalDate.of(2022, 12, 10));
         userService.addCycleToUser(rimm2Cycle, rimm);
         cycleRepository.save(rimm2Cycle);
 
 
 
-        Cycle amyCycle = new Cycle(LocalDate.of(2022, 11, 28), LocalDate.of(2022, 12, 1), 0, ENERGETIC, CRAVINGS, LIGHT);
+        Cycle amyCycle = new Cycle(LocalDate.of(2022, 11, 28), LocalDate.of(2022, 12, 1),  ENERGETIC, CRAVINGS, LIGHT, LocalDate.of(2022, 10, 10));
         userService.addCycleToUser(amyCycle, amy);
         cycleRepository.save(amyCycle);
 
 
-        Cycle georgiaCycle = new Cycle(LocalDate.of(2023, 2, 2), LocalDate.of(2023, 2, 8), 0, FRISKY, HEADACHE, SUPER_HEAVY);
+
+        Cycle georgiaCycle = new Cycle(LocalDate.of(2023, 2, 2), LocalDate.of(2023, 2, 8),   FRISKY, HEADACHE, SUPER_HEAVY, LocalDate.of(2023, 1, 1) );
+
         userService.addCycleToUser(georgiaCycle, georgia);
         cycleRepository.save(georgiaCycle);
 
 
 
-        Cycle rebeccaCycle = new Cycle(LocalDate.of(2022, 9, 7), LocalDate.of(2022, 9, 11), 0, IRRITATED, FATIGUE, SUPER_HEAVY);
+        Cycle rebeccaCycle = new Cycle(LocalDate.of(2022, 9, 7), LocalDate.of(2022, 9, 11),  IRRITATED, FATIGUE, SUPER_HEAVY);
         userService.addCycleToUser(rebeccaCycle, rebecca);
         cycleRepository.save(rebeccaCycle);
 
-        Cycle rebecca2Cycle = new Cycle(LocalDate.of(2022, 10, 5), LocalDate.of(2022, 10, 9), 0, ANXIOUS, BACKACHE, HEAVY);
+        Cycle rebecca2Cycle = new Cycle(LocalDate.of(2022, 10, 5), LocalDate.of(2022, 10, 9),  ANXIOUS, BACKACHE, HEAVY);
         userService.addCycleToUser(rebecca2Cycle, rebecca);
         cycleRepository.save(rebecca2Cycle);
 
-        Cycle rebecca3Cycle = new Cycle(LocalDate.of(2022, 10, 30), LocalDate.of(2022, 11, 3), 0, CALM, BACKACHE, LIGHT);
+        Cycle rebecca3Cycle = new Cycle(LocalDate.of(2022, 10, 30), LocalDate.of(2022, 11, 3),  CALM, BACKACHE, LIGHT);
         userService.addCycleToUser(rebecca3Cycle, rebecca);
         cycleRepository.save(rebecca3Cycle);
 
-        Cycle rebecca4Cycle = new Cycle(LocalDate.of(2022, 11, 26), LocalDate.of(2022, 11, 30), 0, MOOD_SWINGS, FATIGUE, MEDIUM);
+        Cycle rebecca4Cycle = new Cycle(LocalDate.of(2022, 11, 26), LocalDate.of(2022, 11, 30),  MOOD_SWINGS, FATIGUE, MEDIUM);
         userService.addCycleToUser(rebecca4Cycle, rebecca);
         cycleRepository.save(rebecca4Cycle);
 
-        Cycle rebecca5Cycle = new Cycle(LocalDate.of(2022, 12, 21), LocalDate.of(2022, 12, 25), 0, OBSESSIVE_THOUGHTS, BLOATING, HEAVY);
+        Cycle rebecca5Cycle = new Cycle(LocalDate.of(2022, 12, 21), LocalDate.of(2022, 12, 25),  OBSESSIVE_THOUGHTS, BLOATING, HEAVY);
         userService.addCycleToUser(rebecca5Cycle, rebecca);
         cycleRepository.save(rebecca5Cycle);
 
-        Cycle rebecca6Cycle = new Cycle(LocalDate.of(2023, 1, 19), LocalDate.of(2023, 1, 23), 0, APATHETIC, INSOMNIA, SUPER_HEAVY);
+        Cycle rebecca6Cycle = new Cycle(LocalDate.of(2023, 1, 19), LocalDate.of(2023, 1, 23),  APATHETIC, INSOMNIA, SUPER_HEAVY);
         userService.addCycleToUser(rebecca6Cycle, rebecca);
         cycleRepository.save(rebecca6Cycle);
 
 
 
+
+
+
+
         userRepository.saveAll(List.of(rimm, amy, eoan, georgia, rebecca));
-
-
-
-
 
 
 
