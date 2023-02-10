@@ -25,13 +25,6 @@ public class Article {
     private LocalDate date;
 
 
-    // one article many comments
-//    @OneToMany
-//    private List<User> users;
-
-    // one article many comments
-//    @OneToMany(mappedBy = "articles")
-
 
     @ManyToMany
     @JoinTable(
@@ -39,14 +32,14 @@ public class Article {
             joinColumns = {@JoinColumn (name = "article_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "user_id", nullable = false)}
     )
-    @JsonIgnoreProperties({"articles"})
+    @JsonIgnoreProperties({"articles", "comments"})
     private List<User> likes;
 
     @Column(name = "numberOfLikes")
     private int numOfLikes;
 
     @OneToMany(mappedBy = "article")
-    @JsonIgnoreProperties
+    @JsonIgnoreProperties({"article"})
     private List<Comment> comments;
 
     @Column(name = "tags")
@@ -128,11 +121,5 @@ public class Article {
         this.tag = tag;
     }
 
-//    public List<User> getUsers() {
-//        return users;
-//    }
-//
-//    public void setUsers(List<User> users) {
-//        this.users = users;
-//    }
+
 }
