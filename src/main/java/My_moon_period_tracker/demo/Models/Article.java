@@ -121,7 +121,7 @@ public class Article {
         this.tag = tag;
     }
 
-<<<<<<< HEAD
+
 //    public List<User> getUsers() {
 //        return users;
 //    }
@@ -150,7 +150,5 @@ public class Article {
 //    public void setUsers(List<User> users) {
 //        this.users = users;
 //    }
-=======
->>>>>>> RimmBranch
 
 }
