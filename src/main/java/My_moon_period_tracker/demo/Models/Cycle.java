@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Optional;
 
 @Entity(name = "cycle")
 
@@ -42,14 +44,28 @@ public class Cycle {
 
 
 
-    public Cycle(LocalDate lastDate, LocalDate startDate, int lateDays, Emotion emotions, Symptom symptoms, Flow flow){
+    public Cycle(LocalDate startDate, LocalDate lastDate, Emotion emotions, Symptom symptoms, Flow flow, LocalDate lastCycleStartDate){
 //        this.id = id;
-        this.lastDate = lastDate;
         this.startDate = startDate;
-        this.lateDays = lateDays;
+        this.lastDate = lastDate;
+        this.lateDays = lateDaysOutput(lastCycleStartDate, startDate);
         this.emotions = emotions;
         this.symptoms = symptoms;
         this.flow = flow;
+
+//        this.user = user;
+    }
+
+
+    public Cycle(LocalDate startDate, LocalDate lastDate, Emotion emotions, Symptom symptoms, Flow flow){
+//        this.id = id;
+        this.startDate = startDate;
+        this.lastDate = lastDate;
+        this.lateDays = 0;
+        this.emotions = emotions;
+        this.symptoms = symptoms;
+        this.flow = flow;
+
 //        this.user = user;
     }
 
@@ -118,4 +134,18 @@ public class Cycle {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public int lateDaysOutput(LocalDate lastCycleStartDate, LocalDate currentCycleStartDate){
+
+//        LocalDate actualStartDate = this.getStartDate();
+        LocalDate expectedStartDate = lastCycleStartDate.plusDays(28);
+        if(!expectedStartDate.isAfter(currentCycleStartDate)){
+            long days = ChronoUnit.DAYS.between( currentCycleStartDate, expectedStartDate) * -1;
+//            this.setLateDays((int) lateDays);
+            return (int) days;
+        } else {
+            return 0;
+        }
+    }
+
 }
