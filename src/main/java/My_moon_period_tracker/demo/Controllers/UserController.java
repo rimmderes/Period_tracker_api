@@ -43,10 +43,9 @@ public class UserController {
 
     // adding cycle to user
 
-    @PatchMapping(value = "/cycle/{id}")
-    public ResponseEntity<User> addCycletoUser (@PathVariable long id, @RequestBody UserToCycleDTO userToCycleDTO) {
-        long userId = userToCycleDTO.getUserId();
-        User updatedUser = userService.addCycleToUser(id, userId);
+    @PatchMapping(value = "/cycle/{userId}/{cycleId}")
+    public ResponseEntity<User> addCycletoUser (@PathVariable long userId, @PathVariable long cycleId) {
+        User updatedUser = userService.addCycleToUser(userId, cycleId);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 

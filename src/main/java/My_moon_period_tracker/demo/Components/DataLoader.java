@@ -61,7 +61,7 @@ public class DataLoader implements ApplicationRunner {
 
         // users
 
-        User eoan = new User("Eoan", "password", "eoan@gmail.com", LocalDate.of(1994, 7, 1));
+        User eoan = new User("Eoan", "password", "eoan@gmail.com", LocalDate.of(1997, 7, 1));
         userService.addNewUser(eoan);
 
 
@@ -73,46 +73,58 @@ public class DataLoader implements ApplicationRunner {
         userService.addNewUser(georgia);
 
 
-
         User rebecca = new User("Rebecca", "solomon", "rebecca@hotmail.com", LocalDate.of(1999, 12, 31));
         userService.addNewUser(rebecca);
-
 
 
         User rimm = new User("Rimm", "Deres", "rimm@gmail.com", LocalDate.of(1999, 11, 1));
         userService.addNewUser(rimm);
 
 
+        User khalil = new User("Khalil", "Hersi", "khalil@gmail.com", LocalDate.of(1994, 8, 6));
+        userService.addNewUser(khalil);
+
+
 
 
         //articles
 
-        Article womenHealth = new Article("How to have good health", "lorem ispum ...", LocalDate.of(2023, 2, 8),
+        Article womenHealth = new Article("How-to-have-good-health", "lorem ispum ...", LocalDate.of(2023, 2, 8),
                 FEMALE_HEALTH);
-        articleService.addUsersToArticles(womenHealth, rimm);
         articleRepository.save(womenHealth);
-//        articleService.likeArticle(eoan.getId(), womenHealth.getId());
+
+        articleService.likeArticle(1, 1);
+
+
 
         Article menstruation = new Article("Menstruation tips", "lorem ispum ...", LocalDate.of(2022, 9, 5),
                 MENSTRUATION);
         articleRepository.save(menstruation);
-        articleService.likeArticle(rimm.getId(), menstruation.getId());
+
+        articleService.likeArticle(5, 2);
+
 
         Article pregnancy = new Article("Your pregnancy journey", "lorem ispum ...", LocalDate.of(2021, 2, 14), PREGNANCY);
         articleRepository.save(pregnancy);
-        articleService.likeArticle(rebecca.getId(), pregnancy.getId());
+
+        articleService.likeArticle(4, 3);
+
 
 
         Article youngGirls = new Article("For the girlies", "lorem ispum ...", LocalDate.of(2020, 6, 22),
                 YOUNG_GIRLS);
         articleRepository.save(youngGirls);
-        articleService.likeArticle(georgia.getId(), youngGirls.getId());
+        articleService.likeArticle(3, 4);
+
+
 
 
         Article menopause = new Article("For the older ladies", "lorem ispum ...", LocalDate.of(2023, 1, 26),
                 MENOPAUSE);
         articleRepository.save(menopause);
-        articleService.likeArticle(amy.getId(), menopause.getId());
+        articleService.likeArticle(2, 5);
+
+
 
 
 
@@ -126,12 +138,16 @@ public class DataLoader implements ApplicationRunner {
 
         // comments
         Comment comment1 = new Comment("Love this!", LocalDate.of(2023, 3, 30));
+        articleService.addCommentToArticle(comment1, womenHealth);
         userService.addCommentToUser(comment1, amy);
+
         commentRepository.save(comment1);
 
 
 
+
         Comment comment2 = new Comment("Interesting article", LocalDate.of(2023, 4, 30));
+       userService.addCommentToUser(comment2, amy);
         commentRepository.save(comment2);
 
 
