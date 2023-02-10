@@ -43,11 +43,20 @@ public class UserController {
 
     // adding cycle to user
 
-    @PatchMapping(value = "/{id}")
-    public ResponseEntity<User> addCycletoUser (@PathVariable long id, @RequestBody UserToCycleDTO userToCycleDTO) {
-        long userId = userToCycleDTO.getUserId();
-        User updatedUser = userService.addCycleToUser(id, userId);
+    @PatchMapping(value = "/cycle/{userId}/{cycleId}")
+    public ResponseEntity<User> addCycletoUser (@PathVariable long userId, @PathVariable long cycleId) {
+        User updatedUser = userService.addCycleToUser(userId, cycleId);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
+
+    // add comment to user
+    @PatchMapping(value = "/comment/{id}")
+        public ResponseEntity<User> addCommentToUser (@PathVariable long id, @RequestBody UserToCycleDTO userToCycleDTO) {
+        long userId = userToCycleDTO.getUserId();
+        User updatedCommentUser = userService.addCommentToUser(id, userId);
+        return new ResponseEntity<>(updatedCommentUser, HttpStatus.OK);
+    }
+
+
 
 }

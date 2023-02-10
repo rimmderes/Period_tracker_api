@@ -19,13 +19,12 @@ public class Comment {
 
 
     @ManyToOne
-    @JsonIgnoreProperties({"comment"})
-    @JoinColumn(name = "article_id")
+    @JsonIgnoreProperties({"comments"})
+
     private Article article;
 
     @ManyToOne
-    @JsonIgnoreProperties({"comment"})
-    @JoinColumn(name ="user_id")
+    @JsonIgnoreProperties({"comments"})
     private User user;
 
     public Comment(String text, LocalDate datePosted) {

@@ -23,7 +23,7 @@ public class User {
     @Column(name = "DOB")
     private LocalDate DOB;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
     @JsonIgnoreProperties({"user"})
     private List<Comment> comments;
 
@@ -31,9 +31,18 @@ public class User {
     @JsonIgnoreProperties ({"user"})
     private List<Cycle> cycles;
 
-    @JsonIgnoreProperties({"like"})
-    @ManyToMany(mappedBy = "likes")
+    @ManyToMany (mappedBy = "likes")
+    @JsonIgnoreProperties({"likes"})
+
     private List<Article> articles;
+//    @JoinTable(
+//            name = "users_articles",
+//            // create primary key column
+//            joinColumns = {@JoinColumn(name = "user_id", nullable = false)},
+//            // create foreign key column
+//            inverseJoinColumns = {@JoinColumn(name = "article_id", nullable = false)}
+//    )
+
 
     public User(String name, String password, String email, LocalDate DOB) {
         this.name = name;

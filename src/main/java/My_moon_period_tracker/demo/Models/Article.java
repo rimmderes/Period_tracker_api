@@ -31,16 +31,20 @@ public class Article {
 
     // one article many comments
 //    @OneToMany(mappedBy = "articles")
+
+
     @ManyToMany
     @JoinTable(
-            name = "number_of_likes_in_article",
-//            name = "articles_users",
-            joinColumns = {@JoinColumn (name = "user_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "article_id", nullable = false)}
+
+            name = "likes",
+            joinColumns = {@JoinColumn (name = "article_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "user_id", nullable = false)}
     )
     @JsonIgnoreProperties({"articles"})
     private List<User> likes;
 
+    @Column(name = "numberOfLikes")
+    private int numOfLikes;
 
     @OneToMany(mappedBy = "article")
     @JsonIgnoreProperties({"article"})
@@ -49,11 +53,12 @@ public class Article {
     @Column(name = "tags")
     private Tag tag;
 
-    public Article (String title, String content, LocalDate date, Tag tag ){
+    public Article (String title, String content, LocalDate date, Tag tag){
         this.title = title;
         this.content = content;
         this.date = date;
         this.likes = new ArrayList<>();
+        this.numOfLikes = 0;
         this.comments = new ArrayList<>();
         this.tag = tag;
     }
@@ -98,6 +103,14 @@ public class Article {
 
     public void setLikes(List<User> likes) {
         this.likes = likes;
+    }
+
+    public int getNumOfLikes() {
+        return numOfLikes;
+    }
+
+    public void setNumOfLikes(int numOfLikes) {
+        this.numOfLikes = numOfLikes;
     }
 
     public List<Comment> getComments() {
