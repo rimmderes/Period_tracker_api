@@ -72,7 +72,9 @@ public class UserService {
         userRepository.save(user);
         return user;
     }
-
+    public void addCommentToUser (Comment comment, User user) {
+    user.getComments().add(comment);
+}
 
 
 

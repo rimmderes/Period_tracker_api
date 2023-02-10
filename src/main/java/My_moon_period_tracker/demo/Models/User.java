@@ -24,7 +24,7 @@ public class User {
     private LocalDate DOB;
 
     @OneToMany
-    @JsonIgnoreProperties({"user"})
+    @JsonIgnoreProperties({"user", "comments"})
     private List<Comment> comments;
 
     @OneToMany

@@ -144,13 +144,13 @@ public class DataLoader implements ApplicationRunner {
 //        articleRepository.save(womenHealth);
 
 
-//        userService.addCommentToUser(comment1, amy);
+        userService.addCommentToUser(comment1, amy);
 //        articleService.addCommentToArticle(comment1, womenHealth);
 
 
 
         Comment comment2 = new Comment(amy, menopause, "Interesting article", LocalDate.of(2023, 4, 30));
-//       userService.addCommentToUser(comment2, amy);
+       userService.addCommentToUser(comment2, amy);
 
 
         commentRepository.save(comment2);
