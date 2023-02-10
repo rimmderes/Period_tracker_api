@@ -24,7 +24,6 @@ public class User {
     private LocalDate DOB;
 
     @OneToMany
-//            (mappedBy = "user")
     @JsonIgnoreProperties({"user"})
     private List<Comment> comments;
 
@@ -32,14 +31,17 @@ public class User {
     @JsonIgnoreProperties ({"user"})
     private List<Cycle> cycles;
 
-    @ManyToMany
-    @JsonIgnoreProperties({"articles", "likes"})
-    @JoinTable(
-            name = "number_of_likes_in_article",
-            joinColumns = {@JoinColumn (name = "article_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "likes", nullable = false)}
-    )
+    @ManyToMany (mappedBy = "likes")
+    @JsonIgnoreProperties({"likes"})
     private List<Article> articles;
+//    @JoinTable(
+//            name = "users_articles",
+//            // create primary key column
+//            joinColumns = {@JoinColumn(name = "user_id", nullable = false)},
+//            // create foreign key column
+//            inverseJoinColumns = {@JoinColumn(name = "article_id", nullable = false)}
+//    )
+
 
     public User(String name, String password, String email, LocalDate DOB) {
         this.name = name;

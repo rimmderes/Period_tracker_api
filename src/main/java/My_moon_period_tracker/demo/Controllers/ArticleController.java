@@ -30,17 +30,25 @@ public class ArticleController {
 
 //    Get single article
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Article> getArticleById(@PathVariable long id){
-        Optional<Article> article = articleService.findArticleById(id);
-        if (article.isPresent()){
-            return new ResponseEntity<>(article.get(), HttpStatus.OK);
+    public ResponseEntity<Article> getById(@PathVariable long id){
+//        Optional<Article> article = articleService.findArticleById(id);
+        Article article = articleService.findArticleById(id);
+
+        if (article != null){
+            return new ResponseEntity<>(article, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 
-//    Get article by title
-    @GetMapping(value = "/title")
+//    @GetMapping(value="/{id}")
+//    public ResponseEntity<Article> getUserById(@PathVariable long id) {
+//        Article article = articleService.findArticleById(id);
+//        return new ResponseEntity<>(article, HttpStatus.OK);
+//    }
+
+//    Get article by title MADE CHANGES ESP VALUE CHANGE
+    @GetMapping(value = "/{title}")
     public ResponseEntity<List<Article>> getArticleByTitle (
             @RequestParam(required = false, name = "title") String title
     ){
@@ -50,8 +58,8 @@ public class ArticleController {
         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }
 
-//    Get articles by tags
-    @GetMapping(value = "tags")
+//    Get articles by tags CHANGED VALUE
+    @GetMapping(value = "/{tags}")
     public ResponseEntity<List<Article>> getArticleByTag(
             @RequestParam(required = false, name = "tag") Tag tag
     ){
@@ -62,11 +70,27 @@ public class ArticleController {
     }
 
 //    Show comments from article
-    @GetMapping(value = "/{id}/comments")
-    public ResponseEntity<List<Comment>> getAllCommentsFromArticle(@PathVariable long id){
-        Optional<Article> article = articleService.findArticleById(id);
-        List<Comment> comments = article.get().getComments();
+
+//    @GetMapping(value = "/{id}/comments")
+//    public ResponseEntity<List<Comment>> getAllCommentsFromArticle(@PathVariable long id){
+//        Optional<Article> article = articleService.findArticleById(id);
+//        List<Comment> comments = article.get().getComments();
+//        return new ResponseEntity<>(comments, HttpStatus.OK);
+//    }
+
+    @GetMapping (value = "/{id}/comments")
+    public ResponseEntity<List<Comment>> getCommentsFromArticle (@PathVariable long id) {
+        Article article = articleService.findArticleById(id);
+        List<Comment> comments = article.getComments();
         return new ResponseEntity<>(comments, HttpStatus.OK);
+    }
+
+    // like article
+
+    @PatchMapping (value = "/{id}/{user_id}")
+    public ResponseEntity<Article> likeAnArticle (@PathVariable long id, @PathVariable long user_id) {
+        Article article = articleService.likeArticle(user_id, id);
+        return new ResponseEntity<>(article, HttpStatus.OK);
     }
 
 }

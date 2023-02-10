@@ -26,20 +26,20 @@ public class Article {
 
 
     // one article many comments
-    @OneToMany
-    private List<User> users;
+//    @OneToMany
+//    private List<User> users;
 
     // one article many comments
 //    @OneToMany(mappedBy = "articles")
 
 
     @ManyToMany
-    @JsonIgnoreProperties({"article", "likes"})
     @JoinTable(
-            name = "number_of_likes_in_article",
-            joinColumns = {@JoinColumn (name = "likes", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "article_id", nullable = false)}
+            name = "likes",
+            joinColumns = {@JoinColumn (name = "article_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "user_id", nullable = false)}
     )
+    @JsonIgnoreProperties({"articles"})
     private List<User> likes;
 
     @Column(name = "numberOfLikes")
@@ -128,11 +128,11 @@ public class Article {
         this.tag = tag;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+//    public List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(List<User> users) {
+//        this.users = users;
+//    }
 }
