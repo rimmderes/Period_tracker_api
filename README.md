@@ -38,7 +38,7 @@ localhost:8080...
 |.../articles                   |GET         | Display all articles                    |
 |.../articles/1                 |GET         | Find article by id                      |
 |.../articles/title?title=HowToHaveGoodHealth        |GET         | Find article by title               |
-|.../articles/FEMALE_HEALTH     |GET         | Filter articles based on tags          |
+|.../articles/tag?tags=FEMALE_HEALTH     |GET         | Filter articles based on tags          |
 |.../articles/1/comments        |GET         | Get articles' comments                 |
 |.../comments                   |GET         | Display all comments                   |
 |.../comments/1                 |GET         | Find comment by id                     |
