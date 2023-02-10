@@ -73,6 +73,10 @@ public class ArticleService {
         Article article = optionalArticle.get();
         User user = optionalUser.get();
         List<User> likesList = article.getLikes();
+        // if likes list contains user, remove like
+        if (likesList.contains(userId)) {
+            likesList.remove(user);
+        }
         likesList.add(user);
         article.setLikes(likesList);
         articleRepository.save(article);

@@ -94,6 +94,7 @@ public class DataLoader implements ApplicationRunner {
         articleRepository.save(womenHealth);
 
         articleService.likeArticle(1, 1);
+        articleService.likeArticle(1, 1);
 
 
 
