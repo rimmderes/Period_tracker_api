@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Optional;
 
 @Entity(name = "cycle")
 
@@ -43,14 +44,28 @@ public class Cycle {
 
 
 
+    public Cycle(LocalDate startDate, LocalDate lastDate, Emotion emotions, Symptom symptoms, Flow flow, LocalDate lastCycleStartDate){
+//        this.id = id;
+        this.startDate = startDate;
+        this.lastDate = lastDate;
+        this.lateDays = lateDaysOutput(lastCycleStartDate, startDate);
+        this.emotions = emotions;
+        this.symptoms = symptoms;
+        this.flow = flow;
+
+//        this.user = user;
+    }
+
+
     public Cycle(LocalDate startDate, LocalDate lastDate, Emotion emotions, Symptom symptoms, Flow flow){
 //        this.id = id;
         this.startDate = startDate;
         this.lastDate = lastDate;
-        this.lateDays = lateDaysOutput();
+        this.lateDays = 0;
         this.emotions = emotions;
         this.symptoms = symptoms;
         this.flow = flow;
+
 //        this.user = user;
     }
 
@@ -120,17 +135,17 @@ public class Cycle {
         this.user = user;
     }
 
-    public int lateDaysOutput(){
-        LocalDate actualStartDate = this.getStartDate();
-        LocalDate expectedStartDate = this.getStartDate().plusDays(28);
-        long lateDays = 0;
-        if(actualStartDate.isAfter(expectedStartDate)){
-            ChronoUnit.DAYS.between( actualStartDate, expectedStartDate);
-            this.setLateDays((int) lateDays);
+    public int lateDaysOutput(LocalDate lastCycleStartDate, LocalDate currentCycleStartDate){
+
+//        LocalDate actualStartDate = this.getStartDate();
+        LocalDate expectedStartDate = lastCycleStartDate.plusDays(28);
+        if(!expectedStartDate.isAfter(currentCycleStartDate)){
+            long days = ChronoUnit.DAYS.between( currentCycleStartDate, expectedStartDate) * -1;
+//            this.setLateDays((int) lateDays);
+            return (int) days;
         } else {
-            this.setLateDays(0);
+            return 0;
         }
-        return (int) lateDays;
     }
 
 }

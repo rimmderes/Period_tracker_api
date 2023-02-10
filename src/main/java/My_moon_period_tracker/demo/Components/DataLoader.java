@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static My_moon_period_tracker.demo.Enums.Emotion.*;
 import static My_moon_period_tracker.demo.Enums.Flow.*;
@@ -137,23 +138,23 @@ public class DataLoader implements ApplicationRunner {
 
         // adding cycles to user
 
-        Cycle rimmCycle = new Cycle(LocalDate.of(2023, 1, 22), LocalDate.of(2023, 1, 29),  SAD, ACNE, MEDIUM);
+        Cycle rimmCycle = new Cycle(LocalDate.of(2023, 1, 22), LocalDate.of(2023, 1, 29),  SAD, ACNE, MEDIUM );
         userService.addCycleToUser(rimmCycle, rimm);
         cycleRepository.save(rimmCycle);
 
-        Cycle rimm2Cycle = new Cycle(LocalDate.of(2022, 12, 27), LocalDate.of(2023, 1, 2),  HAPPY, TENDER_BREASTS, HEAVY);
+        Cycle rimm2Cycle = new Cycle(LocalDate.of(2022, 12, 27), LocalDate.of(2023, 1, 2),  HAPPY, TENDER_BREASTS, HEAVY, LocalDate.of(2022, 12, 10));
         userService.addCycleToUser(rimm2Cycle, rimm);
         cycleRepository.save(rimm2Cycle);
 
 
 
-        Cycle amyCycle = new Cycle(LocalDate.of(2022, 11, 28), LocalDate.of(2022, 12, 1),  ENERGETIC, CRAVINGS, LIGHT);
+        Cycle amyCycle = new Cycle(LocalDate.of(2022, 11, 28), LocalDate.of(2022, 12, 1),  ENERGETIC, CRAVINGS, LIGHT, LocalDate.of(2022, 10, 10));
         userService.addCycleToUser(amyCycle, amy);
         cycleRepository.save(amyCycle);
 
 
 
-        Cycle georgiaCycle = new Cycle(LocalDate.of(2023, 2, 2), LocalDate.of(2023, 2, 8),  FRISKY, HEADACHE, SUPER_HEAVY);
+        Cycle georgiaCycle = new Cycle(LocalDate.of(2023, 2, 2), LocalDate.of(2023, 2, 8),   FRISKY, HEADACHE, SUPER_HEAVY, LocalDate.of(2023, 1, 1) );
         userService.addCycleToUser(georgiaCycle, georgia);
         cycleRepository.save(georgiaCycle);
 
