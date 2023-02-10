@@ -128,6 +128,27 @@ public class Article {
         this.tag = tag;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+//    Method for likes
+    public void update(){
+        int sum = 0;
+        if(likes.isEmpty()){
+            numOfLikes = 0;
+        }
+        for (User user: likes){
+            int number = user.getArticles().size();
+            sum += number;
+        }
+        numOfLikes = likes.size();
+    }
+
 //    public List<User> getUsers() {
 //        return users;
 //    }
@@ -135,4 +156,5 @@ public class Article {
 //    public void setUsers(List<User> users) {
 //        this.users = users;
 //    }
+
 }
