@@ -213,7 +213,12 @@ public class DataLoader implements ApplicationRunner {
 
         userRepository.saveAll(List.of(rimm, amy, eoan, georgia, rebecca));
 
-
+//        To update article number of likes
+        List<Article> allArticles = articleRepository.findAll();
+        for(Article articleToUpdate : allArticles){
+            articleToUpdate.update();
+            articleRepository.save(articleToUpdate);
+        }
 
 
 
