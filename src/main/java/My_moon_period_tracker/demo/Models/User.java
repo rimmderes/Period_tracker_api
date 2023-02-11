@@ -24,7 +24,7 @@ public class User {
     private LocalDate DOB;
 
     @OneToMany
-    @JsonIgnoreProperties({"user"})
+    @JsonIgnoreProperties({"user", "comments"})
     private List<Comment> comments;
 
     @OneToMany
@@ -32,7 +32,7 @@ public class User {
     private List<Cycle> cycles;
 
     @ManyToMany (mappedBy = "likes")
-    @JsonIgnoreProperties({"likes"})
+    @JsonIgnoreProperties({"likes", "comments"})
     private List<Article> articles;
 //    @JoinTable(
 //            name = "users_articles",

@@ -20,13 +20,17 @@ public class Comment {
 
     @ManyToOne
     @JsonIgnoreProperties({"comments"})
+    @JoinColumn (name = "article_id")
     private Article article;
 
     @ManyToOne
     @JsonIgnoreProperties({"comments"})
+    @JoinColumn(name = "user_id")
     private User user;
 
-    public Comment(String text, LocalDate datePosted) {
+    public Comment(User user, Article article, String text, LocalDate datePosted) {
+        this.user = user;
+        this.article = article;
         this.text = text;
         this.datePosted = datePosted;
     }

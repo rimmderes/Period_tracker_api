@@ -62,10 +62,6 @@ public class UserService {
         return user;
     }
 
-    // addCommentToUser
-    public void  addCommentToUser (Comment comment, User user) {
-        user.getComments().add(comment);
-    }
 
     public User addCommentToUser (long userId, long commentId) {
         User user = userRepository.findById(userId).get();
@@ -76,7 +72,9 @@ public class UserService {
         userRepository.save(user);
         return user;
     }
-
+    public void addCommentToUser (Comment comment, User user) {
+    user.getComments().add(comment);
+}
 
 
 

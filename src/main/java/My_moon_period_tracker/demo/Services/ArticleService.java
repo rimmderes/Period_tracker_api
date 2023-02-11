@@ -3,13 +3,16 @@ package My_moon_period_tracker.demo.Services;
 import My_moon_period_tracker.demo.Enums.Tag;
 import My_moon_period_tracker.demo.Models.*;
 import My_moon_period_tracker.demo.Repositories.ArticleRepository;
+import My_moon_period_tracker.demo.Repositories.CommentRepository;
 import My_moon_period_tracker.demo.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class ArticleService {
@@ -19,6 +22,9 @@ public class ArticleService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    CommentRepository commentRepository;
 
 //    Find all articles for the articles page
     public List<Article> displayAllArticles() {
@@ -48,12 +54,6 @@ public class ArticleService {
 //        return article.get().getLikes().size();
 //    }
 
-
-    // add comment to article
-
-    public void addCommentToArticle (Comment comment, Article article) {
-        article.getComments().add(comment);
-    }
 
 
 
@@ -101,6 +101,7 @@ public Article likeArticle(long userId, long articleId) {
     if (!optionalArticle.isPresent()) {
         return null;
     }
+
     Optional<User> optionalUser = userRepository.findById(userId);
     if (!optionalUser.isPresent()) {
         return null;
@@ -119,6 +120,21 @@ public Article likeArticle(long userId, long articleId) {
 }
 
 
+    // article comment
+
+//    public Article addCommentToArticle (long articleId, long commentId) {
+//        Article article = articleRepository.findById(articleId).get();
+//        Comment comment = commentRepository.findById(commentId).get();
+//        List <Comment> commentList = article.getComments();
+//        commentList.add(comment);
+//        article.setComments(commentList);
+//        articleRepository.save(article);
+//        return article;
+//    }
+
+
+
+
 
 //    public int getArticleLikes(Article article){
 //        List<User> userList = article.getLikes();
@@ -134,5 +150,25 @@ public Article likeArticle(long userId, long articleId) {
 //    public int lateDaysOutput(LocalDate startDate, LocalDate startDate) {
 //
 //    }
+
+
+
+//    Get random article
+
+    Random random = new Random();
+    public Optional<Article> getRandomArticle() {
+        List<Article> allArticles = articleRepository.findAll();
+        List<Long> allIds = new ArrayList<>();
+        for(Article article: allArticles){
+            allIds.add(article.getId());
+        }
+        while (true){
+            int randomId = random.nextInt(0, allIds.size());
+            Optional <Article> randomArticle = articleRepository.findById(allIds.get(randomId));
+            if(randomArticle.isPresent()){
+                return randomArticle;
+            }
+        }
+    }
 
 }
