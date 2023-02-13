@@ -240,6 +240,16 @@ public class DataLoader implements ApplicationRunner {
 //            }
 //            article.setLikes(likesList);
 //            articleRepository.save(article);
+
+////            return articles;
+//        }
+
+
+
+
+
+
+
 //            return articles;
 //        }
 //
@@ -248,6 +258,7 @@ public class DataLoader implements ApplicationRunner {
 //        } else {
 //            womenHealth.getLikes().add(eoan);
 //        }
+
 
 //        Optional<User> foundUser = articleRepository.findLikeById(eoan.getId());
 
