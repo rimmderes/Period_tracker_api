@@ -34,13 +34,6 @@ public class User {
     @ManyToMany (mappedBy = "articleLikes")
     @JsonIgnoreProperties({"likes", "comments"})
     private List<Article> articles;
-//    @JoinTable(
-//            name = "users_articles",
-//            // create primary key column
-//            joinColumns = {@JoinColumn(name = "user_id", nullable = false)},
-//            // create foreign key column
-//            inverseJoinColumns = {@JoinColumn(name = "article_id", nullable = false)}
-//    )
 
 
     public User(String name, String password, String email, LocalDate DOB) {

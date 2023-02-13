@@ -42,14 +42,7 @@ public class ArticleController {
         }
     }
 
-//    @GetMapping(value="/{id}")
-//    public ResponseEntity<Article> getUserById(@PathVariable long id) {
-//        Article article = articleService.findArticleById(id);
-//        return new ResponseEntity<>(article, HttpStatus.OK);
-//    }
-
-//    Get article by title MADE CHANGES ESP VALUE CHANGE
-    @GetMapping(value = "/{title}")
+    @GetMapping(value = "/title")
     public ResponseEntity<List<Article>> getArticleByTitle (
             @RequestParam(required = false, name = "title") String title
     ){
@@ -60,9 +53,9 @@ public class ArticleController {
     }
 
 //    Get articles by tags CHANGED VALUE
-    @GetMapping(value = "/{tags}")
+    @GetMapping(value = "/tags")
     public ResponseEntity<List<Article>> getArticleByTag(
-            @RequestParam(required = false, name = "tag") Tag tag
+            @RequestParam(required = false, name = "tags") Tag tag
     ){
         if (tag != null){
             return new ResponseEntity<>(articleService.findByTags(tag), HttpStatus.OK);
@@ -70,14 +63,7 @@ public class ArticleController {
         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }
 
-//    Show comments from article
 
-//    @GetMapping(value = "/{id}/comments")
-//    public ResponseEntity<List<Comment>> getAllCommentsFromArticle(@PathVariable long id){
-//        Optional<Article> article = articleService.findArticleById(id);
-//        List<Comment> comments = article.get().getComments();
-//        return new ResponseEntity<>(comments, HttpStatus.OK);
-//    }
 
 //    Get article's comments
     @GetMapping (value = "/{id}/comments")

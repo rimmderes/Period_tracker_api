@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/cycle")
+@RequestMapping("/cycles")
 
 public class CycleController {
 

@@ -32,7 +32,7 @@ public class Article {
             joinColumns = {@JoinColumn (name = "article_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "user_id", nullable = false)}
     )
-    @JsonIgnoreProperties({"articles", "comments"})
+    @JsonIgnoreProperties({"articles", "comments", "cycles", "comments.user.articles"})
     private List<User> articleLikes;
 
     @Column(name = "numberOfLikes")
@@ -143,13 +143,6 @@ public class Article {
         numOfLikes = articleLikes.size();
     }
 
-//    public List<User> getUsers() {
-//        return users;
-//    }
-//
-//    public void setUsers(List<User> users) {
-//        this.users = users;
-//    }
 
 
     public boolean checkifUserLiked (long userId) {

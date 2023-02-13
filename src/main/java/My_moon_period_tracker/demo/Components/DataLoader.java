@@ -31,8 +31,6 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     ArticleRepository articleRepository;
 
-//    @Autowired
-//    UserRepository userRepository;
 
     @Autowired
     UserService userService;
@@ -84,20 +82,20 @@ public class DataLoader implements ApplicationRunner {
         User khalil = new User("Khalil", "Hersi", "khalil@gmail.com", LocalDate.of(1994, 8, 6));
         userService.addNewUser(khalil);
 
-        userRepository.saveAll(List.of(rimm, amy, eoan, georgia, rebecca));
+        User jade = new User("Jane", "doe", "janedoe@gmail.com", LocalDate.of(2008, 9, 21));
+        userService.addNewUser(jade);
+
 
 
 
         //articles
 
-        Article womenHealth = new Article("How-to-have-good-health", "lorem ispum ...", LocalDate.of(2023, 2, 8),
+        Article womenHealth = new Article("Feminine Hygiene and Health", "lorem ispum ...", LocalDate.of(2023, 2, 1),
                 FEMALE_HEALTH);
         articleRepository.save(womenHealth);
 
-        articleService.likeArticle(1, 1);
-        articleService.likeArticle(1, 1);
-        articleService.likeArticle(1, 1);
         articleService.likeArticle(2, 1);
+        articleService.likeArticle(4, 1);
 
 
 
@@ -106,18 +104,24 @@ public class DataLoader implements ApplicationRunner {
         articleRepository.save(menstruation);
 
         articleService.likeArticle(5, 2);
+        articleService.likeArticle(3, 2);
+        articleService.likeArticle(6, 2);
+
 
 
         Article pregnancy = new Article("Your pregnancy journey", "lorem ispum ...", LocalDate.of(2021, 2, 14), PREGNANCY);
         articleRepository.save(pregnancy);
 
         articleService.likeArticle(4, 3);
+        articleService.likeArticle(6, 3);
+
 
 
         Article youngGirls = new Article("For the girlies", "lorem ispum ...", LocalDate.of(2020, 6, 22),
                 YOUNG_GIRLS);
         articleRepository.save(youngGirls);
-        articleService.likeArticle(3, 4);
+        articleService.likeArticle(7, 4);
+
 
 
         Article menopause = new Article("For the older ladies", "lorem ispum ...", LocalDate.of(2023, 1, 26),
@@ -126,34 +130,46 @@ public class DataLoader implements ApplicationRunner {
         articleService.likeArticle(2, 5);
 
 
-        // likes
-//        articleService.getNumberOfLikesFromArticle(womenHealth.getId());
-//        articleService.getNumberOfLikesFromArticle(menstruation.getId());
-//        articleService.getNumberOfLikesFromArticle(pregnancy.getId());
-//        articleService.getNumberOfLikesFromArticle(youngGirls.getId());
-//        articleService.getNumberOfLikesFromArticle(menopause.getId());
-
-
         // comments
-        Comment comment1 = new Comment(amy, womenHealth, "Love this!", LocalDate.of(2023, 3, 30));
+        Comment amyComment1 = new Comment(amy, womenHealth, "Love this!", LocalDate.of(2023, 2, 13));
 
-        commentRepository.save(comment1);
-//        articleRepository.save(womenHealth);
-
-
-        userService.addCommentToUser(comment1, amy);
-//        articleService.addCommentToArticle(comment1, womenHealth);
+        commentRepository.save(amyComment1);
+        userService.addCommentToUser(amyComment1, amy);
 
 
-//        Comment comment2 = new Comment("Interesting article", LocalDate.of(2023, 4, 30));
-//        userService.addCommentToUser(comment2, amy);
+        Comment amyComment2 = new Comment(amy, menopause, "Interesting article", LocalDate.of(2023, 1, 30));
+        userService.addCommentToUser(amyComment2, amy);
+        commentRepository.save(amyComment2);
+
+        Comment georgiaComment1 = new Comment(georgia, menstruation, "Very insightful and helpful as I am on my period now.", LocalDate.of(2023, 2, 3));
+        userService.addCommentToUser(georgiaComment1, georgia);
+        commentRepository.save(georgiaComment1);
+
+        Comment rebeccaComment1 = new Comment(rebecca, womenHealth, "Fantastic Hygiene tips which I now use", LocalDate.of(2023, 2, 3 ));
+        userService.addCommentToUser(rebeccaComment1, rebecca);
+        commentRepository.save(rebeccaComment1);
+
+        Comment rebeccaComment2 = new Comment(rebecca, pregnancy, "I had a pregnancy scare and went on this article which helped me feel more prepared for the future", LocalDate.of(2022, 2, 28));
+        userService.addCommentToUser(rebeccaComment2, rebecca);
+        commentRepository.save(rebeccaComment2);
+
+        Comment rimmComment1 = new Comment(rimm, menstruation, "Had bad cramps and now I understand what happens during my period! Wish there was more research into women's health and less into viagra for men", LocalDate.of(2022, 10, 3));
+        userService.addCommentToUser(rimmComment1, rimm);
+        commentRepository.save(rimmComment1);
+
+        Comment khalilComment1 = new Comment(khalil, menstruation, "As a husband and father, it is imperative all men read up on what happens to women during their period. They are incredible. Great article to find out so much!", LocalDate.of(2022, 12, 15));
+        userService.addCommentToUser(khalilComment1, khalil);
+        commentRepository.save(khalilComment1);
+
+        Comment khalilComment2 = new Comment(khalil, pregnancy, "My wife is pregnant and it has been great tracking her journey and knowing what is happening in her body!", LocalDate.of(2021, 5, 3));
+        userService.addCommentToUser(khalilComment2, khalil);
+        commentRepository.save(khalilComment2);
+
+        Comment jadeComment1 = new Comment(jade, youngGirls, "I just started my period and this has informed me so much! Wish we learnt more in school.", LocalDate.of(2022, 7, 8));
+        userService.addCommentToUser(jadeComment1, jade);
+        commentRepository.save(jadeComment1);
 
 
-        Comment comment2 = new Comment(amy, menopause, "Interesting article", LocalDate.of(2023, 4, 30));
-        userService.addCommentToUser(comment2, amy);
-
-
-        commentRepository.save(comment2);
 
 
         // adding cycles to user
@@ -212,45 +228,8 @@ public class DataLoader implements ApplicationRunner {
         }
 
 
-//        List<Article> article = articleRepository.findAll();
-////        List<User> user;
-//        List<User> likesList = userRepository.findAll();
-//        for (User user : likesList){
-//            if (likesList.contains(user)) {
-//                likesList.remove(user);
-//            } else {
-//                likesList.add(user);
-//            }
-//            article.setLikes(likesList);
-//            articleRepository.save(article);
-//        return article;
-//
-//        }
 
-//        List<Article> articles = articleRepository.findAll();
-//        List<User> likesList;
-//        for (Article article : articles) {
-//            likesList = article.getLikes();
-//            for (User user : likesList) {
-//                if (likesList.contains(user)) {
-//                    likesList.remove(user);
-//                } else {
-//                    likesList.add(user);
-//                }
-//            }
-//            article.setLikes(likesList);
-//            articleRepository.save(article);
-//            return articles;
-//        }
-//
-//        if (womenHealth.getLikes().contains(eoan)) {
-//            womenHealth.getLikes().remove(eoan);
-//        } else {
-//            womenHealth.getLikes().add(eoan);
-//        }
-
-//        Optional<User> foundUser = articleRepository.findLikeById(eoan.getId());
-
+        userRepository.saveAll(List.of(rimm, amy, eoan, georgia, rebecca));
 
 
     }
