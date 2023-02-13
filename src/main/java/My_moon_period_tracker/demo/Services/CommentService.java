@@ -26,6 +26,7 @@ public class CommentService {
     ArticleRepository articleRepository;
 
 
+    // get all comments
 
     public List<Comment> getAllComments() {
         return commentRepository.findAll();
@@ -44,13 +45,7 @@ public class CommentService {
     }
 
 
-
-//    public void updateComment(long id, Comment comment){
-//        Comment comment1 = commentRepository.findById(id).get();
-//        comment1.setText(comment.getText());
-//        comment1.setDatePosted(comment.getDatePosted());
-//        commentRepository.save(comment);
-//    }
+// Delete comment
     public void deleteComment(long id){
         commentRepository.deleteById(id);
     }

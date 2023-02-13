@@ -122,14 +122,6 @@ public class Article {
     }
 
 
-//    public List<User> getUsers() {
-//        return users;
-//    }
-//
-//    public void setUsers(List<User> users) {
-//        this.users = users;
-//    }
-
 //    Method for likes
     public void update(){
         int sum = 0;
