@@ -1,6 +1,7 @@
 package My_moon_period_tracker.demo.Controllers;
 
 import My_moon_period_tracker.demo.Models.Comment;
+import My_moon_period_tracker.demo.Models.CommentDTO;
 import My_moon_period_tracker.demo.Repositories.CommentRepository;
 import My_moon_period_tracker.demo.Services.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class CommentController {
     CommentRepository commentRepository;
     //    post comment
     @PostMapping
-    public ResponseEntity<Comment> addNewComment(@RequestBody Comment comment) {
-        Comment newComment = commentService.addComment(comment);
+    public ResponseEntity<Comment> addNewComment(@RequestBody CommentDTO commentDTO) {
+        Comment newComment = commentService.addComment(commentDTO);
         return new ResponseEntity<>(newComment, HttpStatus.CREATED);
     }
 
@@ -47,8 +48,8 @@ public class CommentController {
     }
 
     @PatchMapping(value= "/{id}")
-    public ResponseEntity<Comment> updateCommentById(@PathVariable long id, @RequestBody Comment comment){
-        commentService.updateComment(id, comment);
+    public ResponseEntity<Comment> updateCommentById(@PathVariable long id, @RequestBody CommentDTO commentDTO){
+        commentService.updateComment(commentDTO, id);
         Optional<Comment> updatedComment = commentService.getCommentsById(id);
         return new ResponseEntity<>(updatedComment.get(), HttpStatus.OK);
 
