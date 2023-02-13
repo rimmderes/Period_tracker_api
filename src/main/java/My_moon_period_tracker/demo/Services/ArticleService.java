@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class ArticleService {
@@ -56,30 +58,67 @@ public class ArticleService {
 
 
 //    Like article
+// first try
+//    public Article likeArticle(long userId, long articleId){
+//        Optional<Article> optionalArticle = articleRepository.findById(articleId);
+//        if (!optionalArticle.isPresent()) {
+//            return null;
+//        }
+//
+//        Optional<User> optionalUser = userRepository.findById(userId);
+//        if (!optionalUser.isPresent()) {
+//            return null;
+//        }
+//
+//        Article article = optionalArticle.get();
+//        User user = optionalUser.get();
+//        List<User> likesList = article.getLikes();
+//        // if likes list contains user, remove like
+//
+//        for (User userLike: likesList){
+//            if (likesList.contains(userLike.getId())) {
+//                likesList.remove(userLike);
+//            }
+//            else {
+//                likesList.add(userLike);
+//                article.setLikes(likesList);
+//                articleRepository.save(article);
+//            }
+//        }
+//
+////        if (likesList.contains(userId)) {
+////            likesList.remove(user);
+////        }
+////        likesList.add(user);
+////        article.setLikes(likesList);
+////        articleRepository.save(article);
+//        return article;
+//    }
 
-    public Article likeArticle(long userId, long articleId){
-        Optional<Article> optionalArticle = articleRepository.findById(articleId);
-        if (!optionalArticle.isPresent()) {
-            return null;
-        }
-
-        Optional<User> optionalUser = userRepository.findById(userId);
-        if (!optionalUser.isPresent()) {
-            return null;
-        }
-
-        Article article = optionalArticle.get();
-        User user = optionalUser.get();
-        List<User> likesList = article.getLikes();
-        // if likes list contains user, remove like
-        if (likesList.contains(userId)) {
-            likesList.remove(user);
-        }
-        likesList.add(user);
-        article.setLikes(likesList);
-        articleRepository.save(article);
-        return article;
+// second try
+public Article likeArticle(long userId, long articleId) {
+    Optional<Article> optionalArticle = articleRepository.findById(articleId);
+    if (!optionalArticle.isPresent()) {
+        return null;
     }
+
+    Optional<User> optionalUser = userRepository.findById(userId);
+    if (!optionalUser.isPresent()) {
+        return null;
+    }
+    Article article = optionalArticle.get();
+    User user = optionalUser.get();
+    List<User> likesList = article.getLikes();
+    if (likesList.contains(user)) {
+        likesList.remove(user);
+    } else {
+        likesList.add(user);
+    }
+    article.setLikes(likesList);
+    articleRepository.save(article);
+    return article;
+}
+
 
     // article comment
 
@@ -92,6 +131,7 @@ public class ArticleService {
 //        articleRepository.save(article);
 //        return article;
 //    }
+
 
 
 
@@ -113,5 +153,22 @@ public class ArticleService {
 
 
 
+//    Get random article
+
+    Random random = new Random();
+    public Optional<Article> getRandomArticle() {
+        List<Article> allArticles = articleRepository.findAll();
+        List<Long> allIds = new ArrayList<>();
+        for(Article article: allArticles){
+            allIds.add(article.getId());
+        }
+        while (true){
+            int randomId = random.nextInt(0, allIds.size());
+            Optional <Article> randomArticle = articleRepository.findById(allIds.get(randomId));
+            if(randomArticle.isPresent()){
+                return randomArticle;
+            }
+        }
+    }
 
 }

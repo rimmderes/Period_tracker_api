@@ -57,7 +57,7 @@ public class DataLoader implements ApplicationRunner {
     }
 
     @Override
-    public void run(ApplicationArguments args) throws Exception{
+    public void run(ApplicationArguments args) throws Exception {
 
         // users
 
@@ -85,8 +85,6 @@ public class DataLoader implements ApplicationRunner {
         userService.addNewUser(khalil);
 
 
-
-
         //articles
 
         Article womenHealth = new Article("How-to-have-good-health", "lorem ispum ...", LocalDate.of(2023, 2, 8),
@@ -95,7 +93,6 @@ public class DataLoader implements ApplicationRunner {
 
         articleService.likeArticle(1, 1);
         articleService.likeArticle(1, 1);
-
 
 
         Article menstruation = new Article("Menstruation tips", "lorem ispum ...", LocalDate.of(2022, 9, 5),
@@ -111,22 +108,16 @@ public class DataLoader implements ApplicationRunner {
         articleService.likeArticle(4, 3);
 
 
-
         Article youngGirls = new Article("For the girlies", "lorem ispum ...", LocalDate.of(2020, 6, 22),
                 YOUNG_GIRLS);
         articleRepository.save(youngGirls);
         articleService.likeArticle(3, 4);
 
 
-
-
         Article menopause = new Article("For the older ladies", "lorem ispum ...", LocalDate.of(2023, 1, 26),
                 MENOPAUSE);
         articleRepository.save(menopause);
         articleService.likeArticle(2, 5);
-
-
-
 
 
         // likes
@@ -149,81 +140,106 @@ public class DataLoader implements ApplicationRunner {
 
 
 
+//        Comment comment2 = new Comment("Interesting article", LocalDate.of(2023, 4, 30));
+//        userService.addCommentToUser(comment2, amy);
+
+
         Comment comment2 = new Comment(amy, menopause, "Interesting article", LocalDate.of(2023, 4, 30));
        userService.addCommentToUser(comment2, amy);
+
 
 
         commentRepository.save(comment2);
 
 
-
-
-
-
-
         // adding cycles to user
 
-        Cycle rimmCycle = new Cycle(LocalDate.of(2023, 1, 22), LocalDate.of(2023, 1, 29),  SAD, ACNE, MEDIUM );
+        Cycle rimmCycle = new Cycle(LocalDate.of(2023, 1, 22), LocalDate.of(2023, 1, 29), SAD, ACNE, MEDIUM);
         userService.addCycleToUser(rimmCycle, rimm);
         cycleRepository.save(rimmCycle);
 
-        Cycle rimm2Cycle = new Cycle(LocalDate.of(2022, 12, 27), LocalDate.of(2023, 1, 2),  HAPPY, TENDER_BREASTS, HEAVY, LocalDate.of(2022, 12, 10));
+        Cycle rimm2Cycle = new Cycle(LocalDate.of(2022, 12, 27), LocalDate.of(2023, 1, 2), HAPPY, TENDER_BREASTS, HEAVY, LocalDate.of(2022, 12, 10));
         userService.addCycleToUser(rimm2Cycle, rimm);
         cycleRepository.save(rimm2Cycle);
 
 
-
-        Cycle amyCycle = new Cycle(LocalDate.of(2022, 11, 28), LocalDate.of(2022, 12, 1),  ENERGETIC, CRAVINGS, LIGHT, LocalDate.of(2022, 10, 10));
+        Cycle amyCycle = new Cycle(LocalDate.of(2022, 11, 28), LocalDate.of(2022, 12, 1), ENERGETIC, CRAVINGS, LIGHT, LocalDate.of(2022, 10, 10));
         userService.addCycleToUser(amyCycle, amy);
         cycleRepository.save(amyCycle);
 
 
-
-        Cycle georgiaCycle = new Cycle(LocalDate.of(2023, 2, 2), LocalDate.of(2023, 2, 8),   FRISKY, HEADACHE, SUPER_HEAVY, LocalDate.of(2023, 1, 1) );
+        Cycle georgiaCycle = new Cycle(LocalDate.of(2023, 2, 2), LocalDate.of(2023, 2, 8), FRISKY, HEADACHE, SUPER_HEAVY, LocalDate.of(2023, 1, 1));
 
         userService.addCycleToUser(georgiaCycle, georgia);
         cycleRepository.save(georgiaCycle);
 
 
-
-        Cycle rebeccaCycle = new Cycle(LocalDate.of(2022, 9, 7), LocalDate.of(2022, 9, 11),  IRRITATED, FATIGUE, SUPER_HEAVY);
+        Cycle rebeccaCycle = new Cycle(LocalDate.of(2022, 9, 7), LocalDate.of(2022, 9, 11), IRRITATED, FATIGUE, SUPER_HEAVY);
         userService.addCycleToUser(rebeccaCycle, rebecca);
         cycleRepository.save(rebeccaCycle);
 
-        Cycle rebecca2Cycle = new Cycle(LocalDate.of(2022, 10, 5), LocalDate.of(2022, 10, 9),  ANXIOUS, BACKACHE, HEAVY);
+        Cycle rebecca2Cycle = new Cycle(LocalDate.of(2022, 10, 5), LocalDate.of(2022, 10, 9), ANXIOUS, BACKACHE, HEAVY);
         userService.addCycleToUser(rebecca2Cycle, rebecca);
         cycleRepository.save(rebecca2Cycle);
 
-        Cycle rebecca3Cycle = new Cycle(LocalDate.of(2022, 10, 30), LocalDate.of(2022, 11, 3),  CALM, BACKACHE, LIGHT);
+        Cycle rebecca3Cycle = new Cycle(LocalDate.of(2022, 10, 30), LocalDate.of(2022, 11, 3), CALM, BACKACHE, LIGHT);
         userService.addCycleToUser(rebecca3Cycle, rebecca);
         cycleRepository.save(rebecca3Cycle);
 
-        Cycle rebecca4Cycle = new Cycle(LocalDate.of(2022, 11, 26), LocalDate.of(2022, 11, 30),  MOOD_SWINGS, FATIGUE, MEDIUM);
+        Cycle rebecca4Cycle = new Cycle(LocalDate.of(2022, 11, 26), LocalDate.of(2022, 11, 30), MOOD_SWINGS, FATIGUE, MEDIUM);
         userService.addCycleToUser(rebecca4Cycle, rebecca);
         cycleRepository.save(rebecca4Cycle);
 
-        Cycle rebecca5Cycle = new Cycle(LocalDate.of(2022, 12, 21), LocalDate.of(2022, 12, 25),  OBSESSIVE_THOUGHTS, BLOATING, HEAVY);
+        Cycle rebecca5Cycle = new Cycle(LocalDate.of(2022, 12, 21), LocalDate.of(2022, 12, 25), OBSESSIVE_THOUGHTS, BLOATING, HEAVY);
         userService.addCycleToUser(rebecca5Cycle, rebecca);
         cycleRepository.save(rebecca5Cycle);
 
-        Cycle rebecca6Cycle = new Cycle(LocalDate.of(2023, 1, 19), LocalDate.of(2023, 1, 23),  APATHETIC, INSOMNIA, SUPER_HEAVY);
+        Cycle rebecca6Cycle = new Cycle(LocalDate.of(2023, 1, 19), LocalDate.of(2023, 1, 23), APATHETIC, INSOMNIA, SUPER_HEAVY);
         userService.addCycleToUser(rebecca6Cycle, rebecca);
         cycleRepository.save(rebecca6Cycle);
-
-
-
-
-
 
 
         userRepository.saveAll(List.of(rimm, amy, eoan, georgia, rebecca));
 
 //        To update article number of likes
         List<Article> allArticles = articleRepository.findAll();
-        for(Article articleToUpdate : allArticles){
+        for (Article articleToUpdate : allArticles) {
             articleToUpdate.update();
             articleRepository.save(articleToUpdate);
         }
+
+
+//        List<Article> article = articleRepository.findAll();
+////        List<User> user;
+//        List<User> likesList = userRepository.findAll();
+//        for (User user : likesList){
+//            if (likesList.contains(user)) {
+//                likesList.remove(user);
+//            } else {
+//                likesList.add(user);
+//            }
+//            article.setLikes(likesList);
+//            articleRepository.save(article);
+//        return article;
+//
+//        }
+
+        List<Article> articles = articleRepository.findAll();
+        List<User> likesList;
+        for (Article article : articles) {
+            likesList = article.getLikes();
+            for (User user : likesList) {
+                if (likesList.contains(user)) {
+                    likesList.remove(user);
+                } else {
+                    likesList.add(user);
+                }
+            }
+            article.setLikes(likesList);
+            articleRepository.save(article);
+//            return articles;
+        }
+
 
 
 

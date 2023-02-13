@@ -6,6 +6,7 @@ import My_moon_period_tracker.demo.Models.Comment;
 import My_moon_period_tracker.demo.Models.User;
 import My_moon_period_tracker.demo.Services.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.config.RepositoryConfigurationSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -78,6 +79,7 @@ public class ArticleController {
 //        return new ResponseEntity<>(comments, HttpStatus.OK);
 //    }
 
+//    Get article's comments
     @GetMapping (value = "/{id}/comments")
     public ResponseEntity<List<Comment>> getCommentsFromArticle (@PathVariable long id) {
         Article article = articleService.findArticleById(id);
@@ -91,6 +93,18 @@ public class ArticleController {
     public ResponseEntity<Article> likeAnArticle (@PathVariable long id, @PathVariable long user_id) {
         Article article = articleService.likeArticle(user_id, id);
         return new ResponseEntity<>(article, HttpStatus.OK);
+    }
+
+
+//    Get random article
+    @GetMapping(value = "/random")
+    public ResponseEntity<Article> getRandomArrticle(){
+        Optional<Article> article = articleService.getRandomArticle();
+        if (article.isPresent()){
+            return new ResponseEntity<>(article.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
 }
