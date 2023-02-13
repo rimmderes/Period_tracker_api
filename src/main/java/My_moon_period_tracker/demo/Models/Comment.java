@@ -19,12 +19,12 @@ public class Comment {
 
 
     @ManyToOne
-    @JsonIgnoreProperties({"comments"})
+    @JsonIgnoreProperties({"comments", "cycles"})
     @JoinColumn (name = "article_id")
     private Article article;
 
     @ManyToOne
-    @JsonIgnoreProperties({"comments"})
+    @JsonIgnoreProperties({"comments", "cycles"})
     @JoinColumn(name = "user_id")
     private User user;
 

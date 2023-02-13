@@ -58,15 +58,12 @@ public class Cycle {
 
 
     public Cycle(LocalDate startDate, LocalDate lastDate, Emotion emotions, Symptom symptoms, Flow flow){
-//        this.id = id;
         this.startDate = startDate;
         this.lastDate = lastDate;
         this.lateDays = 0;
         this.emotions = emotions;
         this.symptoms = symptoms;
         this.flow = flow;
-
-//        this.user = user;
     }
 
     public Cycle(){}

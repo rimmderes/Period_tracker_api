@@ -48,54 +48,7 @@ public class ArticleService {
     }
 
 
-//    Find number of likes in article
-//    public int getNumberOfLikesFromArticle(long id) {
-//        Optional<Article> article = articleRepository.findById(id);
-//        return article.get().getLikes().size();
-//    }
-
-
-
-
-//    Like article
-// first try
-//    public Article likeArticle(long userId, long articleId){
-//        Optional<Article> optionalArticle = articleRepository.findById(articleId);
-//        if (!optionalArticle.isPresent()) {
-//            return null;
-//        }
-//
-//        Optional<User> optionalUser = userRepository.findById(userId);
-//        if (!optionalUser.isPresent()) {
-//            return null;
-//        }
-//
-//        Article article = optionalArticle.get();
-//        User user = optionalUser.get();
-//        List<User> likesList = article.getLikes();
-//        // if likes list contains user, remove like
-//
-//        for (User userLike: likesList){
-//            if (likesList.contains(userLike.getId())) {
-//                likesList.remove(userLike);
-//            }
-//            else {
-//                likesList.add(userLike);
-//                article.setLikes(likesList);
-//                articleRepository.save(article);
-//            }
-//        }
-//
-////        if (likesList.contains(userId)) {
-////            likesList.remove(user);
-////        }
-////        likesList.add(user);
-////        article.setLikes(likesList);
-////        articleRepository.save(article);
-//        return article;
-//    }
-
-// second try
+// like article
 public Article likeArticle(long userId, long articleId) {
     Optional<Article> optionalArticle = articleRepository.findById(articleId);
     if (!optionalArticle.isPresent()) {
@@ -118,38 +71,6 @@ public Article likeArticle(long userId, long articleId) {
     articleRepository.save(article);
     return article;
 }
-
-
-    // article comment
-
-//    public Article addCommentToArticle (long articleId, long commentId) {
-//        Article article = articleRepository.findById(articleId).get();
-//        Comment comment = commentRepository.findById(commentId).get();
-//        List <Comment> commentList = article.getComments();
-//        commentList.add(comment);
-//        article.setComments(commentList);
-//        articleRepository.save(article);
-//        return article;
-//    }
-
-
-
-
-
-//    public int getArticleLikes(Article article){
-//        List<User> userList = article.getLikes();
-//        int sum = userList.size();
-//        return sum;
-//    }
-
-//    public void addUsersToArticles(User user, Article article){
-//        article.getLikes().add(user);
-//    }
-
-
-//    public int lateDaysOutput(LocalDate startDate, LocalDate startDate) {
-//
-//    }
 
 
 
