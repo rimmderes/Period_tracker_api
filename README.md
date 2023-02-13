@@ -83,3 +83,4 @@ In the terminal, type in `git clone git@github.com:rimmderes/period_tracker_fron
 Then type `npm start` to start up the single page application in http://localhost:3000.
 
 ## Thank you
+We would to say a special thank you to the trainers and the rest of the cohort for their support :kissing_heart:
