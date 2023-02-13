@@ -84,6 +84,9 @@ public class DataLoader implements ApplicationRunner {
         User khalil = new User("Khalil", "Hersi", "khalil@gmail.com", LocalDate.of(1994, 8, 6));
         userService.addNewUser(khalil);
 
+        userRepository.saveAll(List.of(rimm, amy, eoan, georgia, rebecca));
+
+
 
         //articles
 
@@ -93,6 +96,9 @@ public class DataLoader implements ApplicationRunner {
 
         articleService.likeArticle(1, 1);
         articleService.likeArticle(1, 1);
+        articleService.likeArticle(1, 1);
+        articleService.likeArticle(2, 1);
+
 
 
         Article menstruation = new Article("Menstruation tips", "lorem ispum ...", LocalDate.of(2022, 9, 5),
@@ -139,14 +145,12 @@ public class DataLoader implements ApplicationRunner {
 //        articleService.addCommentToArticle(comment1, womenHealth);
 
 
-
 //        Comment comment2 = new Comment("Interesting article", LocalDate.of(2023, 4, 30));
 //        userService.addCommentToUser(comment2, amy);
 
 
         Comment comment2 = new Comment(amy, menopause, "Interesting article", LocalDate.of(2023, 4, 30));
-       userService.addCommentToUser(comment2, amy);
-
+        userService.addCommentToUser(comment2, amy);
 
 
         commentRepository.save(comment2);
@@ -199,7 +203,6 @@ public class DataLoader implements ApplicationRunner {
         cycleRepository.save(rebecca6Cycle);
 
 
-        userRepository.saveAll(List.of(rimm, amy, eoan, georgia, rebecca));
 
 //        To update article number of likes
         List<Article> allArticles = articleRepository.findAll();
@@ -237,6 +240,7 @@ public class DataLoader implements ApplicationRunner {
 //            }
 //            article.setLikes(likesList);
 //            articleRepository.save(article);
+
 ////            return articles;
 //        }
 
@@ -246,10 +250,20 @@ public class DataLoader implements ApplicationRunner {
 
 
 
+//            return articles;
+//        }
+//
+//        if (womenHealth.getLikes().contains(eoan)) {
+//            womenHealth.getLikes().remove(eoan);
+//        } else {
+//            womenHealth.getLikes().add(eoan);
+//        }
+
+
+//        Optional<User> foundUser = articleRepository.findLikeById(eoan.getId());
 
 
 
     }
-
 
 }

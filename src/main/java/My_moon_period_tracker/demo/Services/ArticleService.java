@@ -108,13 +108,13 @@ public Article likeArticle(long userId, long articleId) {
     }
     Article article = optionalArticle.get();
     User user = optionalUser.get();
-    List<User> likesList = article.getLikes();
-    if (likesList.contains(user)) {
-        likesList.remove(user);
+    List<User> likesList = article.getArticleLikes();
+    if (article.checkifUserLiked(user.getId())) {
+        article.removeLike(user);
     } else {
         likesList.add(user);
     }
-    article.setLikes(likesList);
+    article.setArticleLikes(likesList);
     articleRepository.save(article);
     return article;
 }

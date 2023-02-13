@@ -28,12 +28,12 @@ public class Article {
 
     @ManyToMany
     @JoinTable(
-            name = "likes",
+            name = "article_likes",
             joinColumns = {@JoinColumn (name = "article_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "user_id", nullable = false)}
     )
     @JsonIgnoreProperties({"articles", "comments"})
-    private List<User> likes;
+    private List<User> articleLikes;
 
     @Column(name = "numberOfLikes")
     private int numOfLikes;
@@ -49,7 +49,7 @@ public class Article {
         this.title = title;
         this.content = content;
         this.date = date;
-        this.likes = new ArrayList<>();
+        this.articleLikes = new ArrayList<>();
         this.numOfLikes = 0;
         this.comments = new ArrayList<>();
         this.tag = tag;
@@ -89,12 +89,12 @@ public class Article {
         this.date = date;
     }
 
-    public List<User> getLikes() {
-        return likes;
+    public List<User> getArticleLikes() {
+        return articleLikes;
     }
 
-    public void setLikes(List<User> likes) {
-        this.likes = likes;
+    public void setArticleLikes(List<User> articleLikes) {
+        this.articleLikes = articleLikes;
     }
 
     public int getNumOfLikes() {
@@ -133,14 +133,14 @@ public class Article {
 //    Method for likes
     public void update(){
         int sum = 0;
-        if(likes.isEmpty()){
+        if(articleLikes.isEmpty()){
             numOfLikes = 0;
         }
-        for (User user: likes){
+        for (User user: articleLikes){
             int number = user.getArticles().size();
             sum += number;
         }
-        numOfLikes = likes.size();
+        numOfLikes = articleLikes.size();
     }
 
 //    public List<User> getUsers() {
@@ -150,5 +150,29 @@ public class Article {
 //    public void setUsers(List<User> users) {
 //        this.users = users;
 //    }
+
+
+    public boolean checkifUserLiked (long userId) {
+        for (User user : articleLikes) {
+            if(user.getId() == userId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removeLike (User userToRemove) {
+        int indexToRemove = -1;
+        for(int i = 0; i<articleLikes.size(); i++) {
+            if(userToRemove.getId() == articleLikes.get(i).getId()) {
+                indexToRemove = i;
+            }
+
+        }
+        if (indexToRemove > -1) {
+            articleLikes.remove(indexToRemove);
+
+        }
+    }
 
 }

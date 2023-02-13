@@ -31,7 +31,7 @@ public class User {
     @JsonIgnoreProperties ({"user"})
     private List<Cycle> cycles;
 
-    @ManyToMany (mappedBy = "likes")
+    @ManyToMany (mappedBy = "articleLikes")
     @JsonIgnoreProperties({"likes", "comments"})
     private List<Article> articles;
 //    @JoinTable(
