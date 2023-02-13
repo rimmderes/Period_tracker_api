@@ -15,7 +15,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "name")
-    private String name;
+    private String username;
     @Column(name = "password")
     private String password;
     @Column(name = "email")
@@ -36,8 +36,8 @@ public class User {
     private List<Article> articles;
 
 
-    public User(String name, String password, String email, LocalDate DOB) {
-        this.name = name;
+    public User(String username, String password, String email, LocalDate DOB) {
+        this.username = username;
         this.password = password;
         this.email = email;
         this.DOB = DOB;
@@ -60,11 +60,11 @@ public class User {
     }
 
     public String getName() {
-        return name;
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
