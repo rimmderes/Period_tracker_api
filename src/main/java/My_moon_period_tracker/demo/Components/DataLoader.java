@@ -224,21 +224,21 @@ public class DataLoader implements ApplicationRunner {
 //
 //        }
 
-        List<Article> articles = articleRepository.findAll();
-        List<User> likesList;
-        for (Article article : articles) {
-            likesList = article.getLikes();
-            for (User user : likesList) {
-                if (likesList.contains(user)) {
-                    likesList.remove(user);
-                } else {
-                    likesList.add(user);
-                }
-            }
-            article.setLikes(likesList);
-            articleRepository.save(article);
-//            return articles;
-        }
+//        List<Article> articles = articleRepository.findAll();
+//        List<User> likesList;
+//        for (Article article : articles) {
+//            likesList = article.getLikes();
+//            for (User user : likesList) {
+//                if (likesList.contains(user)) {
+//                    likesList.remove(user);
+//                } else {
+//                    likesList.add(user);
+//                }
+//            }
+//            article.setLikes(likesList);
+//            articleRepository.save(article);
+////            return articles;
+//        }
 
 
 

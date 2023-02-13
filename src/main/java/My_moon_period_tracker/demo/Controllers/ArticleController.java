@@ -49,7 +49,7 @@ public class ArticleController {
 //    }
 
 //    Get article by title MADE CHANGES ESP VALUE CHANGE
-    @GetMapping(value = "/{title}")
+    @GetMapping(value = "/title")
     public ResponseEntity<List<Article>> getArticleByTitle (
             @RequestParam(required = false, name = "title") String title
     ){
@@ -60,7 +60,7 @@ public class ArticleController {
     }
 
 //    Get articles by tags CHANGED VALUE
-    @GetMapping(value = "/{tags}")
+    @GetMapping(value = "/tags")
     public ResponseEntity<List<Article>> getArticleByTag(
             @RequestParam(required = false, name = "tag") Tag tag
     ){
