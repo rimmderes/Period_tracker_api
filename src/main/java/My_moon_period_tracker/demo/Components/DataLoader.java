@@ -229,7 +229,6 @@ public class DataLoader implements ApplicationRunner {
 
 
 
-
         userRepository.saveAll(List.of(rimm, amy, eoan, georgia, rebecca));
 
 

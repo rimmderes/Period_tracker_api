@@ -42,16 +42,6 @@ public class ArticleController {
         }
     }
 
-<<<<<<< HEAD
-//    @GetMapping(value="/{id}")
-//    public ResponseEntity<Article> getUserById(@PathVariable long id) {
-//        Article article = articleService.findArticleById(id);
-//        return new ResponseEntity<>(article, HttpStatus.OK);
-//    }
-
-//    Get article by title MADE CHANGES ESP VALUE CHANGE
-=======
->>>>>>> RimmBranch
     @GetMapping(value = "/title")
     public ResponseEntity<List<Article>> getArticleByTitle (
             @RequestParam(required = false, name = "title") String title
