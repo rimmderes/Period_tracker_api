@@ -2,7 +2,9 @@ package My_moon_period_tracker.demo.Controllers;
 
 import My_moon_period_tracker.demo.DTOs.LoginDTO;
 import My_moon_period_tracker.demo.DTOs.SignUpDTO;
+import My_moon_period_tracker.demo.Models.Role;
 import My_moon_period_tracker.demo.Models.User;
+import My_moon_period_tracker.demo.Repositories.RoleRepository;
 import My_moon_period_tracker.demo.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
+
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     @Autowired
@@ -29,6 +33,9 @@ public class AuthController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @PostMapping("/signin")
     public ResponseEntity<String> authenicateUser(@RequestBody LoginDTO loginDto){
@@ -47,6 +54,9 @@ public class AuthController {
         user.setEmail(signUpDTO.getEmail());
         user.setPassword(passwordEncoder.encode(signUpDTO.getPassword()));
         user.setDOB(signUpDTO.getDOB());
+
+        Role roles = roleRepository.findByName("ROLE_ADMIN").get();
+        user.setRoles(Collections.singleton(roles));
 
         userRepository.save(user);
 

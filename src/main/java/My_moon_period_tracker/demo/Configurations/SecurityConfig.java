@@ -38,12 +38,13 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.csrf().disable().authorizeHttpRequests((authorize) ->
-//                authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-//                        .requestMatchers("/api/auth/**").permitAll()
-                        authorize.anyRequest().authenticated());
+                authorize
+                        .mvcMatchers("/api/auth/**").permitAll()
+                        .anyRequest().authenticated());
 
         return httpSecurity.build();
     }
 
-//    Ask a trainer if the last bean is fine to use
+
+
 }

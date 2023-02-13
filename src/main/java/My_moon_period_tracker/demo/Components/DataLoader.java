@@ -1,19 +1,14 @@
 package My_moon_period_tracker.demo.Components;
 
-import My_moon_period_tracker.demo.Models.Article;
-import My_moon_period_tracker.demo.Models.Comment;
-import My_moon_period_tracker.demo.Models.Cycle;
-import My_moon_period_tracker.demo.Models.User;
-import My_moon_period_tracker.demo.Repositories.ArticleRepository;
-import My_moon_period_tracker.demo.Repositories.CommentRepository;
-import My_moon_period_tracker.demo.Repositories.CycleRepository;
-import My_moon_period_tracker.demo.Repositories.UserRepository;
+import My_moon_period_tracker.demo.Models.*;
+import My_moon_period_tracker.demo.Repositories.*;
 import My_moon_period_tracker.demo.Services.ArticleService;
 import My_moon_period_tracker.demo.Services.CommentService;
 import My_moon_period_tracker.demo.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -46,6 +41,12 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     CommentService commentService;
 
+    @Autowired
+    RoleRepository roleRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public DataLoader(CycleRepository cycleRepository,
                       UserRepository userRepository,
                       CommentRepository commentRepository){
@@ -59,30 +60,33 @@ public class DataLoader implements ApplicationRunner {
 
         // users
 
-        User eoan = new User("Eoan", "password", "eoan@gmail.com", LocalDate.of(1997, 7, 1));
+        Role role = new Role("ROLE_ADMIN");
+        roleRepository.save(role);
+
+        User eoan = new User("Eoan", passwordEncoder.encode("password"), "eoan@gmail.com", LocalDate.of(1997, 7, 1));
         userService.addNewUser(eoan);
-
-
-        User amy = new User("Amy", "confirmpassword", "amy@hotmail.com", LocalDate.of(1999, 4, 3));
+//
+//
+        User amy = new User("Amy", passwordEncoder.encode("confirmpassword"), "amy@hotmail.com", LocalDate.of(1999, 4, 3));
         userService.addNewUser(amy);
-
-
-        User georgia = new User("Georgia", "clarke", "georgia@hotmail.com", LocalDate.of(2000, 4, 5));
+//
+//
+        User georgia = new User("Georgia", passwordEncoder.encode("clarke"), "georgia@hotmail.com", LocalDate.of(2000, 4, 5));
         userService.addNewUser(georgia);
-
-
-        User rebecca = new User("Rebecca", "solomon", "rebecca@hotmail.com", LocalDate.of(1999, 12, 31));
+//
+//
+        User rebecca = new User("Rebecca", passwordEncoder.encode("solomon"), "rebecca@hotmail.com", LocalDate.of(1999, 12, 31));
         userService.addNewUser(rebecca);
-
-
-        User rimm = new User("Rimm", "Deres", "rimm@gmail.com", LocalDate.of(1999, 11, 1));
+//
+//
+        User rimm = new User("Rimm", passwordEncoder.encode("Deres"), "rimm@gmail.com", LocalDate.of(1999, 11, 1));
         userService.addNewUser(rimm);
-
-
-        User khalil = new User("Khalil", "Hersi", "khalil@gmail.com", LocalDate.of(1994, 8, 6));
+//
+//
+        User khalil = new User("Khalil", passwordEncoder.encode("Hersi"), "khalil@gmail.com", LocalDate.of(1994, 8, 6));
         userService.addNewUser(khalil);
-
-        User jade = new User("Jane", "doe", "janedoe@gmail.com", LocalDate.of(2008, 9, 21));
+//
+        User jade = new User("Jane", passwordEncoder.encode("doe"), "janedoe@gmail.com", LocalDate.of(2008, 9, 21));
         userService.addNewUser(jade);
 
 
@@ -128,7 +132,7 @@ public class DataLoader implements ApplicationRunner {
                 MENOPAUSE);
         articleRepository.save(menopause);
         articleService.likeArticle(2, 5);
-
+//
 
         // comments
         Comment amyComment1 = new Comment(amy, womenHealth, "Love this!", LocalDate.of(2023, 2, 13));

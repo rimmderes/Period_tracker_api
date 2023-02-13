@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Table(name = "users", uniqueConstraints = {
@@ -38,6 +39,12 @@ public class User {
     @ManyToMany (mappedBy = "articleLikes")
     @JsonIgnoreProperties({"likes", "comments"})
     private List<Article> articles;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    private Set<Role> roles;
 
 
     public User(String name, String password, String email, LocalDate DOB) {
@@ -117,5 +124,13 @@ public class User {
 
     public void setArticles(List<Article> articles) {
         this.articles = articles;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
