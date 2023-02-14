@@ -1,7 +1,7 @@
 package My_moon_period_tracker.demo.Controllers;
 
 import My_moon_period_tracker.demo.Models.User;
-import My_moon_period_tracker.demo.Models.UserToCycleDTO;
+import My_moon_period_tracker.demo.DTOs.UserToCycleDTO;
 import My_moon_period_tracker.demo.Repositories.UserRepository;
 import My_moon_period_tracker.demo.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

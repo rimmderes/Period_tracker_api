@@ -1,12 +1,11 @@
 package My_moon_period_tracker.demo.Controllers;
 
 import My_moon_period_tracker.demo.Models.Comment;
-import My_moon_period_tracker.demo.Models.CommentDTO;
+import My_moon_period_tracker.demo.DTOs.CommentDTO;
 import My_moon_period_tracker.demo.Repositories.CommentRepository;
 import My_moon_period_tracker.demo.Services.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package My_moon_period_tracker.demo.Models;
+package My_moon_period_tracker.demo.DTOs;
 
 import java.time.LocalDate;
 

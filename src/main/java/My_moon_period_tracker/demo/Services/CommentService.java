@@ -2,7 +2,7 @@ package My_moon_period_tracker.demo.Services;
 
 import My_moon_period_tracker.demo.Models.Article;
 import My_moon_period_tracker.demo.Models.Comment;
-import My_moon_period_tracker.demo.Models.CommentDTO;
+import My_moon_period_tracker.demo.DTOs.CommentDTO;
 import My_moon_period_tracker.demo.Models.User;
 import My_moon_period_tracker.demo.Repositories.ArticleRepository;
 import My_moon_period_tracker.demo.Repositories.CommentRepository;
