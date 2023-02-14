@@ -67,7 +67,7 @@ The backend extensions we managed to complete were:
 - Different account types for different users
 
 ## Installation Instructions
-Git clone this repo in the terminal using the command `git clone` SSH key.
+Git clone this repo in the terminal using the command `git clone git@github.com:rimmderes/Period_tracker_api.git`.
 
 In the terminal type in the command `createdb period_tracker_api` to create a database. It will not run without this database.
 
@@ -78,8 +78,9 @@ Once you run this server-side application, you can also run our client-side proj
 
 You can view our front-end project in GitHub using this link.
 
-In the terminal, type in `git clone` Front-end SSH key.
+In the terminal, type in `git clone git@github.com:rimmderes/period_tracker_frontend.git`.
 
 Then type `npm start` to start up the single page application in http://localhost:3000.
 
 ## Thank you
+We would to say a special thank you to the trainers and the rest of the cohort for their support :kissing_heart:
