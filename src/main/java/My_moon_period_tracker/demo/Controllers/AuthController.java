@@ -38,12 +38,12 @@ public class AuthController {
     private RoleRepository roleRepository;
 
     @PostMapping("/signin")
-    public ResponseEntity<String> authenicateUser(@RequestBody LoginDTO loginDto){
+    public ResponseEntity<?> authenicateUser(@RequestBody LoginDTO loginDto){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new ResponseEntity<>("User signed-in successfully!", HttpStatus.OK);
+        return new ResponseEntity<>( HttpStatus.OK);
     }
-
+//"User signed-in successfully!",
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignUpDTO signUpDTO){
         if(userRepository.existsByEmail(signUpDTO.getEmail())){
