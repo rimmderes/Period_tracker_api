@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -41,7 +42,8 @@ public class AuthController {
     public ResponseEntity<?> authenicateUser(@RequestBody LoginDTO loginDto){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new ResponseEntity<>( HttpStatus.OK);
+        Optional<User> user = userRepository.findByEmail(loginDto.getEmail());
+        return new ResponseEntity<>(user.get(), HttpStatus.OK);
     }
 //"User signed-in successfully!",
     @PostMapping("/signup")
