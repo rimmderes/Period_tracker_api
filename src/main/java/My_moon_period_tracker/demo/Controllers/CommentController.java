@@ -22,6 +22,7 @@ public class CommentController {
     @Autowired
     CommentRepository commentRepository;
     //    post comment
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public ResponseEntity<Comment> addNewComment(@RequestBody CommentDTO commentDTO) {
         Comment newComment = commentService.addComment(commentDTO);

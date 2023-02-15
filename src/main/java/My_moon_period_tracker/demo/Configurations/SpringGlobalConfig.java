@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.Arrays;
+
 
 @Configuration
 public class SpringGlobalConfig implements WebMvcConfigurer {
@@ -14,7 +16,8 @@ public class SpringGlobalConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:3000")
                 .allowedHeaders("*")
-                .allowCredentials(true)
-                .allowedMethods("*");
+                .allowedMethods("GET", "POST", "OPTIONS")
+                .allowCredentials(true);
+
     }
 }
