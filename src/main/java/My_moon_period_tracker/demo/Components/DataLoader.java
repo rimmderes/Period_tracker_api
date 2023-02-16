@@ -179,33 +179,51 @@ public class DataLoader implements ApplicationRunner {
 
         Cycle rimmCycle = new Cycle(rimm, LocalDate.of(2023, 1, 22), LocalDate.of(2023, 1, 29), SAD, ACNE, MEDIUM);
         cycleRepository.save(rimmCycle);
+        userService.addCycleToUser(rimm.getId(),rimmCycle.getId());
 
         Cycle rimm2Cycle = new Cycle(rimm, LocalDate.of(2022, 12, 27), LocalDate.of(2023, 1, 2), HAPPY, TENDER_BREASTS, HEAVY, LocalDate.of(2022, 12, 10));
         cycleRepository.save(rimm2Cycle);
+        userService.addCycleToUser(rimm.getId(),rimm2Cycle.getId());
 
         Cycle amyCycle = new Cycle(amy, LocalDate.of(2022, 11, 28), LocalDate.of(2022, 12, 1), ENERGETIC, CRAVINGS, LIGHT, LocalDate.of(2022, 10, 10));
         cycleRepository.save(amyCycle);
+        userService.addCycleToUser(amy.getId(),amyCycle.getId());
+
 
         Cycle georgiaCycle = new Cycle(georgia, LocalDate.of(2023, 2, 2), LocalDate.of(2023, 2, 8), FRISKY, HEADACHE, SUPER_HEAVY, LocalDate.of(2023, 1, 1));
         cycleRepository.save(georgiaCycle);
+        userService.addCycleToUser(georgia.getId(),georgiaCycle.getId());
+
 
         Cycle rebeccaCycle = new Cycle(rebecca, LocalDate.of(2022, 9, 7), LocalDate.of(2022, 9, 11), IRRITATED, FATIGUE, SUPER_HEAVY);
         cycleRepository.save(rebeccaCycle);
+        userService.addCycleToUser(rebecca.getId(),rebeccaCycle.getId());
+
 
         Cycle rebecca2Cycle = new Cycle(rebecca, LocalDate.of(2022, 10, 5), LocalDate.of(2022, 10, 9), ANXIOUS, BACKACHE, HEAVY);
         cycleRepository.save(rebecca2Cycle);
+        userService.addCycleToUser(rebecca.getId(),rebecca2Cycle.getId());
+
 
         Cycle rebecca3Cycle = new Cycle(rebecca, LocalDate.of(2022, 10, 30), LocalDate.of(2022, 11, 3), CALM, BACKACHE, LIGHT);
         cycleRepository.save(rebecca3Cycle);
+        userService.addCycleToUser(rebecca.getId(),rebecca3Cycle.getId());
+
 
         Cycle rebecca4Cycle = new Cycle(rebecca, LocalDate.of(2022, 11, 26), LocalDate.of(2022, 11, 30), MOOD_SWINGS, FATIGUE, MEDIUM);
         cycleRepository.save(rebecca4Cycle);
+        userService.addCycleToUser(rebecca.getId(),rebecca4Cycle.getId());
+
 
         Cycle rebecca5Cycle = new Cycle(rebecca, LocalDate.of(2022, 12, 21), LocalDate.of(2022, 12, 25), OBSESSIVE_THOUGHTS, BLOATING, HEAVY);
         cycleRepository.save(rebecca5Cycle);
+        userService.addCycleToUser(rebecca.getId(),rebecca5Cycle.getId());
+
 
         Cycle rebecca6Cycle = new Cycle(rebecca, LocalDate.of(2023, 1, 19), LocalDate.of(2023, 1, 23), APATHETIC, INSOMNIA, SUPER_HEAVY);
         cycleRepository.save(rebecca6Cycle);
+        userService.addCycleToUser(rebecca.getId(),rebecca6Cycle.getId());
+
 
 
 
