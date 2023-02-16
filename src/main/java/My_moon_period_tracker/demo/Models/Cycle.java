@@ -44,7 +44,7 @@ public class Cycle {
 
 
 
-    public Cycle(LocalDate startDate, LocalDate lastDate, Emotion emotions, Symptom symptoms, Flow flow, LocalDate lastCycleStartDate){
+    public Cycle(User user, LocalDate startDate, LocalDate lastDate, Emotion emotions, Symptom symptoms, Flow flow, LocalDate lastCycleStartDate){
 //        this.id = id;
         this.startDate = startDate;
         this.lastDate = lastDate;
@@ -52,18 +52,18 @@ public class Cycle {
         this.emotions = emotions;
         this.symptoms = symptoms;
         this.flow = flow;
-
-//        this.user = user;
+        this.user = user;
     }
 
 
-    public Cycle(LocalDate startDate, LocalDate lastDate, Emotion emotions, Symptom symptoms, Flow flow){
+    public Cycle(User user, LocalDate startDate, LocalDate lastDate, Emotion emotions, Symptom symptoms, Flow flow){
         this.startDate = startDate;
         this.lastDate = lastDate;
         this.lateDays = 0;
         this.emotions = emotions;
         this.symptoms = symptoms;
         this.flow = flow;
+        this.user = user;
     }
 
     public Cycle(){}

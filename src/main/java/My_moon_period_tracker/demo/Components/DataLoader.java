@@ -178,49 +178,51 @@ public class DataLoader implements ApplicationRunner {
 
         // adding cycles to user
 
-        Cycle rimmCycle = new Cycle(LocalDate.of(2023, 1, 22), LocalDate.of(2023, 1, 29), SAD, ACNE, MEDIUM);
-        userService.addCycleToUser(rimmCycle, rimm);
+        Cycle rimmCycle = new Cycle(rimm, LocalDate.of(2023, 1, 22), LocalDate.of(2023, 1, 29), SAD, ACNE, MEDIUM);
         cycleRepository.save(rimmCycle);
-
-        Cycle rimm2Cycle = new Cycle(LocalDate.of(2022, 12, 27), LocalDate.of(2023, 1, 2), HAPPY, TENDER_BREASTS, HEAVY, LocalDate.of(2022, 12, 10));
-        userService.addCycleToUser(rimm2Cycle, rimm);
-        cycleRepository.save(rimm2Cycle);
+//        userService.addCycleToUser(rimmCycle, rimm);
 
 
-        Cycle amyCycle = new Cycle(LocalDate.of(2022, 11, 28), LocalDate.of(2022, 12, 1), ENERGETIC, CRAVINGS, LIGHT, LocalDate.of(2022, 10, 10));
-        userService.addCycleToUser(amyCycle, amy);
-        cycleRepository.save(amyCycle);
-
-
-        Cycle georgiaCycle = new Cycle(LocalDate.of(2023, 2, 2), LocalDate.of(2023, 2, 8), FRISKY, HEADACHE, SUPER_HEAVY, LocalDate.of(2023, 1, 1));
-
-        userService.addCycleToUser(georgiaCycle, georgia);
-        cycleRepository.save(georgiaCycle);
-
-
-        Cycle rebeccaCycle = new Cycle(LocalDate.of(2022, 9, 7), LocalDate.of(2022, 9, 11), IRRITATED, FATIGUE, SUPER_HEAVY);
-        userService.addCycleToUser(rebeccaCycle, rebecca);
-        cycleRepository.save(rebeccaCycle);
-
-        Cycle rebecca2Cycle = new Cycle(LocalDate.of(2022, 10, 5), LocalDate.of(2022, 10, 9), ANXIOUS, BACKACHE, HEAVY);
-        userService.addCycleToUser(rebecca2Cycle, rebecca);
-        cycleRepository.save(rebecca2Cycle);
-
-        Cycle rebecca3Cycle = new Cycle(LocalDate.of(2022, 10, 30), LocalDate.of(2022, 11, 3), CALM, BACKACHE, LIGHT);
-        userService.addCycleToUser(rebecca3Cycle, rebecca);
-        cycleRepository.save(rebecca3Cycle);
-
-        Cycle rebecca4Cycle = new Cycle(LocalDate.of(2022, 11, 26), LocalDate.of(2022, 11, 30), MOOD_SWINGS, FATIGUE, MEDIUM);
-        userService.addCycleToUser(rebecca4Cycle, rebecca);
-        cycleRepository.save(rebecca4Cycle);
-
-        Cycle rebecca5Cycle = new Cycle(LocalDate.of(2022, 12, 21), LocalDate.of(2022, 12, 25), OBSESSIVE_THOUGHTS, BLOATING, HEAVY);
-        userService.addCycleToUser(rebecca5Cycle, rebecca);
-        cycleRepository.save(rebecca5Cycle);
-
-        Cycle rebecca6Cycle = new Cycle(LocalDate.of(2023, 1, 19), LocalDate.of(2023, 1, 23), APATHETIC, INSOMNIA, SUPER_HEAVY);
-        userService.addCycleToUser(rebecca6Cycle, rebecca);
-        cycleRepository.save(rebecca6Cycle);
+//        Cycle rimm2Cycle = new Cycle(LocalDate.of(2022, 12, 27), LocalDate.of(2023, 1, 2), HAPPY, TENDER_BREASTS, HEAVY, LocalDate.of(2022, 12, 10));
+//        cycleRepository.save(rimm2Cycle);
+//        userService.addCycleToUser(rimm2Cycle, rimm);
+//
+//
+//
+//        Cycle amyCycle = new Cycle(LocalDate.of(2022, 11, 28), LocalDate.of(2022, 12, 1), ENERGETIC, CRAVINGS, LIGHT, LocalDate.of(2022, 10, 10));
+//        userService.addCycleToUser(amyCycle, amy);
+//        cycleRepository.save(amyCycle);
+//
+//
+//        Cycle georgiaCycle = new Cycle(LocalDate.of(2023, 2, 2), LocalDate.of(2023, 2, 8), FRISKY, HEADACHE, SUPER_HEAVY, LocalDate.of(2023, 1, 1));
+//
+//        userService.addCycleToUser(georgiaCycle, georgia);
+//        cycleRepository.save(georgiaCycle);
+//
+//
+//        Cycle rebeccaCycle = new Cycle(LocalDate.of(2022, 9, 7), LocalDate.of(2022, 9, 11), IRRITATED, FATIGUE, SUPER_HEAVY);
+//        userService.addCycleToUser(rebeccaCycle, rebecca);
+//        cycleRepository.save(rebeccaCycle);
+//
+//        Cycle rebecca2Cycle = new Cycle(LocalDate.of(2022, 10, 5), LocalDate.of(2022, 10, 9), ANXIOUS, BACKACHE, HEAVY);
+//        userService.addCycleToUser(rebecca2Cycle, rebecca);
+//        cycleRepository.save(rebecca2Cycle);
+//
+//        Cycle rebecca3Cycle = new Cycle(LocalDate.of(2022, 10, 30), LocalDate.of(2022, 11, 3), CALM, BACKACHE, LIGHT);
+//        userService.addCycleToUser(rebecca3Cycle, rebecca);
+//        cycleRepository.save(rebecca3Cycle);
+//
+//        Cycle rebecca4Cycle = new Cycle(LocalDate.of(2022, 11, 26), LocalDate.of(2022, 11, 30), MOOD_SWINGS, FATIGUE, MEDIUM);
+//        userService.addCycleToUser(rebecca4Cycle, rebecca);
+//        cycleRepository.save(rebecca4Cycle);
+//
+//        Cycle rebecca5Cycle = new Cycle(LocalDate.of(2022, 12, 21), LocalDate.of(2022, 12, 25), OBSESSIVE_THOUGHTS, BLOATING, HEAVY);
+//        userService.addCycleToUser(rebecca5Cycle, rebecca);
+//        cycleRepository.save(rebecca5Cycle);
+//
+//        Cycle rebecca6Cycle = new Cycle(LocalDate.of(2023, 1, 19), LocalDate.of(2023, 1, 23), APATHETIC, INSOMNIA, SUPER_HEAVY);
+//        userService.addCycleToUser(rebecca6Cycle, rebecca);
+//        cycleRepository.save(rebecca6Cycle);
 
 
 
