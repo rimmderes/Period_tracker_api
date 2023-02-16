@@ -18,10 +18,21 @@ We decided to not give users the power to post and delete articles as a way of p
 
 Diagrams - UML, ERD
 
+### UML Diagram
+![Screenshot 2023-02-16 at 12 09 45](https://user-images.githubusercontent.com/110283546/219366282-6fa1301d-ecd6-4788-a272-3637ae14bb19.png)
+
+Our UML diagram includes our services and repositories to show the functions and derived queries we made inside of them.
+
+### ERD Diagram
+![Screenshot 2023-02-16 at 12 29 26](https://user-images.githubusercontent.com/110283546/219366224-c6d4911f-886f-4131-bbed-d56723cd5986.png)
+
+As you can see our ERD diagram is quite complex. We have a many to many relationship between users and articles and three one to many relationships between user and cycles, user and comments & articles and comments.
+
 ## Tech Stack
 - Java
 - Spring Boot
 - Spring Framework (dependencies: Spring Web, Spring Boot DevTools, PostgreSQL Driver, Spring Data JPA)
+- Spring Security
 - PostgreSQL
 - Postman (for testing)
 - Postico (for testing)
@@ -40,7 +51,7 @@ localhost:8080...
 |.../cycle                      |GET         | Display all cycles                      |
 |.../cycle/startdate            |GET         | Find cycle by start date                |
 |.../cycle/1                    |PATCH       | Update cycle by id                      |
-|.../cycle                      |POST        | Add a new cycle                         |
+|.../cycle/{user_id}                      |POST        | Add a new cycle                         |
 |.../articles                   |GET         | Display all articles                    |
 |.../articles/1                 |GET         | Find article by id                      |
 |.../articles/title?title=Menstruation Tips        |GET         | Find article by title               |
@@ -53,6 +64,18 @@ localhost:8080...
 |.../comments/1                 |DELETE      | Delete comment by id                   |
 
 ## Testing
+Testing the backend was completed in Postico and Postman.
+
+![Screenshot 2023-02-16 at 12 30 11](https://user-images.githubusercontent.com/110283546/219367772-37698ff4-02e5-4f9e-8fc2-8e474dc13e46.png)
+
+Using Spring Security, we managed to create login and registration authenication to make sure our data is safe and secure. If someone attempted to access any the URL paths without the authenicated login details they will receive a 403 forbidden error message and cannot access any stored data.
+
+Authenicated users will have they password encoded for extra security as shown in the Postman request above and the Positco request below.
+
+![Screenshot 2023-02-16 at 12 50 17](https://user-images.githubusercontent.com/110283546/219369519-5149c6ea-fba6-48b5-a9b1-b2c93a9afb63.png)
+
+This Postico table shows our current users. When a user registers successfully, their information will be added to this table.
+
 
 ## Completed Extensions
 We managed to complete several extensions during the course of the full-stack project.
@@ -62,6 +85,8 @@ The backend extensions we managed to complete were:
 - Find article by title
 - Allow users to like an article and remove like if they click twice
 - Able to see the number of likes each article has
+- Implement the lateDays method
+- Login and Register authentication
 
 ## Futher Possible Extensions
 - Different account types for different users
