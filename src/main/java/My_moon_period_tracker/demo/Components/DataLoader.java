@@ -100,6 +100,8 @@ public class DataLoader implements ApplicationRunner {
 
         articleService.likeArticle(2, 1);
         articleService.likeArticle(4, 1);
+        articleService.likeArticle(5, 1);
+
 
 
 
@@ -107,7 +109,7 @@ public class DataLoader implements ApplicationRunner {
                 MENSTRUATION);
         articleRepository.save(menstruation);
 
-        articleService.likeArticle(5, 2);
+//        articleService.likeArticle(5, 2);
         articleService.likeArticle(3, 2);
         articleService.likeArticle(6, 2);
 
