@@ -16,7 +16,7 @@ public class SpringGlobalConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:3000")
                 .allowedHeaders("*")
-                .allowedMethods("GET", "POST", "OPTIONS")
+                .allowedMethods("GET", "POST", "OPTIONS", "PATCH")
                 .allowCredentials(true);
 
     }
