@@ -49,7 +49,9 @@ public class UserService {
     }
 
     public void addCycleToUser (Cycle cycle, User user) {
-        user.getCycles().add(cycle);
+        List<Cycle> cycles = user.getCycles();
+        cycles.add(cycle);
+        user.setCycles(cycles);
     }
 
     // delete user

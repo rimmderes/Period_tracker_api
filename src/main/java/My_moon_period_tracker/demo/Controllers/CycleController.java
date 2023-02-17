@@ -1,8 +1,10 @@
 package My_moon_period_tracker.demo.Controllers;
 
 import My_moon_period_tracker.demo.Models.Cycle;
+import My_moon_period_tracker.demo.Models.User;
 import My_moon_period_tracker.demo.Repositories.CycleRepository;
 import My_moon_period_tracker.demo.Services.CycleService;
+import My_moon_period_tracker.demo.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -23,10 +25,14 @@ public class CycleController {
     @Autowired
     private CycleRepository cycleRepository;
 
+    @Autowired
+    private UserService userService;
 
     // add a cycle
-    @PostMapping
-    public ResponseEntity<Cycle> addNewCycle (@RequestBody Cycle cycle) {
+    @PostMapping(value = "/{user_id}")
+    public ResponseEntity<Cycle> addNewCycle (@RequestBody Cycle cycle, @PathVariable Long user_id) {
+        User user = userService.getUserById(user_id);
+        cycle.setUser(user);
         Cycle newCycle = cycleService.addCycle(cycle);
         return new ResponseEntity<>(newCycle, HttpStatus.CREATED);
     }

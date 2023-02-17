@@ -62,6 +62,9 @@ public class AuthController {
 
         userRepository.save(user);
 
-        return new ResponseEntity<>("Congrats, you're now a member of My Moon!", HttpStatus.OK);
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signUpDTO.getEmail(), signUpDTO.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
